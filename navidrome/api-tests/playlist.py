@@ -31,18 +31,19 @@ def test_create_playlist():
 
     # Create a payload containing playlist data
     url = f"{BASE_URL}/playlist"
+
+    # Create an altered payload containing 10,000 A's for boundary testing
+    big_title = "A" * 10000
+
     payload = {
-        "name": "QA Regression Playlist",
+        "name": big_title,
         "comment": "Created via automated open-source API test pipeline",
-        "tracks": [],
+        "tracks": ["Master of Puppets"], # Greatest Metal Song of all time!
     }
 
     # Send the payload as a post request to create the playlist
     response = requests.post(url, json=payload, headers=headers)
-    assert(
-        response.status_code == 200
-    ), f"Playlist creation failed with status {response.status_code}"
-    print("Playlist created successfully.")
+    assert response.status_code == 400
 
 if __name__ == "__main__":
     test_create_playlist()
