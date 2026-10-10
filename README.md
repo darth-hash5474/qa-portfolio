@@ -13,12 +13,14 @@ Stack: Python, [requests](https://requests.readthedocs.io/), [Playwright](https:
 
 ### API tests
 
-| Script | What it checks |
+| Test file | What it checks |
 |---|---|
-| [smoke_test.py](navidrome/api-tests/smoke_test.py) | The server is reachable. |
-| [login.py](navidrome/api-tests/login.py) | `POST /auth/login` returns 200 and a JWT. Saves the token for the other scripts. |
-| [playlist.py](navidrome/api-tests/playlist.py) | Boundary test: creates a playlist with a 50,000-character name. Expects either a 400, or the name stored intact; if the server silently truncates it, the mismatch is reported and the saved length is checked against 255. |
-| [tracks.py](navidrome/api-tests/tracks.py) | Adds tracks to a throwaway playlist through `POST /api/playlist/{id}/tracks`. A control adds real song IDs and expects them saved; the main test sends IDs that don't exist and expects a 400 or 422 with nothing saved. |
+| [test_smoke.py](navidrome/api-tests/test_smoke.py) | The server is reachable. |
+| [test_login.py](navidrome/api-tests/test_login.py) | `POST /auth/login` returns 200 and a JWT. |
+| [test_playlist.py](navidrome/api-tests/test_playlist.py) | Boundary test: creates a playlist with a 50,000-character name. Passes if the server refuses it with a 400 or stores it intact; fails if the name is silently truncated. |
+| [test_tracks.py](navidrome/api-tests/test_tracks.py) | Adds tracks to a playlist through `POST /api/playlist/{id}/tracks`. A control adds real song IDs and expects them saved; the main test sends IDs that don't exist and expects a 400 or 422 with nothing saved. |
+
+Shared setup lives in [conftest.py](navidrome/api-tests/conftest.py): one login per run, and a fixture that deletes any playlist a test creates.
 
 ### UI tests
 
@@ -28,7 +30,7 @@ Stack: Python, [requests](https://requests.readthedocs.io/), [Playwright](https:
 
 ### Findings
 
-**Adding tracks to a playlist reports success for invalid track IDs.** Found with [tracks.py](navidrome/api-tests/tracks.py).
+**Adding tracks to a playlist reports success for invalid track IDs.** Found with [test_tracks.py](navidrome/api-tests/test_tracks.py).
 
 - **Version:** Navidrome 0.64.2
 - **Steps:** `POST /api/playlist/{id}/tracks` with an `ids` array containing only non-existent or malformed track IDs.
@@ -51,18 +53,13 @@ playwright install chromium
 cp navidrome/.env.example navidrome/.env   # then fill in USERNAME and PASSWORD
 ```
 
-The API scripts read and write the token with a relative path, so run them from `navidrome/api-tests/`. Run `login.py` first:
+API tests:
 
 ```bash
-cd navidrome/api-tests
-mkdir -p jwt-token
-python3 smoke_test.py
-python3 login.py
-python3 playlist.py
-python3 tracks.py
+pytest navidrome/api-tests -v
 ```
 
-`tracks.py` creates and deletes its own playlists. Its control test is skipped when the library has no songs, and the script exits with an `AssertionError` while the bug above is present.
+Two results are expected besides passes: the invalid track ID test is marked `xfail` while the bug above is present, and the valid track control is skipped when the library has no songs.
 
 UI smoke test:
 
