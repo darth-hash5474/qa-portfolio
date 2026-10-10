@@ -9,7 +9,7 @@ Test automation projects: UI and API suites written in Python against real appli
 
 ## Navidrome
 
-Stack: Python, [requests](https://requests.readthedocs.io/), [Playwright](https://playwright.dev/python/), pytest.
+Stack: Python, [requests](https://requests.readthedocs.io/), [Playwright](https://playwright.dev/python/), pytest, pytest-playwright.
 
 ### API tests
 
@@ -24,9 +24,13 @@ Shared setup lives in [conftest.py](navidrome/api-tests/conftest.py): one login 
 
 ### UI tests
 
-| Script | What it checks |
+| Test file | What it checks |
 |---|---|
-| [smoke_test.py](navidrome/ui-tests/smoke_test.py) | Opens the app in Chromium (headed) and prints the page title. |
+| [test_ui_smoke.py](navidrome/ui-tests/test_ui_smoke.py) | The app loads in Chromium with the right title. |
+| [test_ui_login.py](navidrome/ui-tests/test_ui_login.py) | A valid login opens the library, a wrong password shows an "Unauthorized" error and stays on the login page, and logout returns to the login page. |
+| [test_ui_playlist.py](navidrome/ui-tests/test_ui_playlist.py) | Save is disabled until a playlist has a name, and a playlist created through the form appears in the sidebar. |
+
+Screens are wrapped in page objects in [pages.py](navidrome/ui-tests/pages.py). [conftest.py](navidrome/ui-tests/conftest.py) signs in once through the login form and reuses that browser state, and deletes any playlist a test creates.
 
 ### Findings
 
@@ -61,8 +65,10 @@ pytest navidrome/api-tests -v
 
 Two results are expected besides passes: the invalid track ID test is marked `xfail` while the bug above is present, and the valid track control is skipped when the library has no songs.
 
-UI smoke test:
+UI tests (headless by default; add `--headed` to watch the browser):
 
 ```bash
-python3 navidrome/ui-tests/smoke_test.py
+pytest navidrome/ui-tests -v
 ```
+
+Navidrome allows 5 logins per 20 seconds and a full run uses 4, so a second run started straight after the first fails with `429 Too Many Requests`. Wait 20 seconds between runs, or start the test server with `ND_AUTHREQUESTLIMIT=0` to turn the limit off.
