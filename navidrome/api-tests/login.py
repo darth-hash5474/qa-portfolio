@@ -6,34 +6,32 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Url configuration
-URL = os.getenv("URL")
-AUTH_URL = f"{URL}/auth/login"
+BASE_URL = os.getenv("URL")
 
 # User vars
 USER = os.getenv("USERNAME")
 PASS = os.getenv("PASSWORD")
 
 
-def send_login_request():
-    # Setup the headers
-    headers = {
-        "Content-Type": "application/json"
-    }
-    # Setup the payload
-    payload = {
-        "username":USER,
-        "password":PASS,
-    }
+def test_login():
 
-    # Send the payload jsonified via requests
-    try:
-        response = requests.post(url=AUTH_URL, headers=headers, json=payload)
-        if response.ok:
-            print("200")
-        else:
-            print(f"Error Logging In. Check your credentials and try again. {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error retrieving auth token. {e}")
+    # Setup the payload and the url
+    url = f"{BASE_URL}/auth/login"
+    payload = {"username":USER,"password":PASS}
 
-# Test that it prints 200 using python3 login.py
-request_auth_access = send_login_request()
+    response = requests.post(url=url, json=payload)
+
+    assert (
+        response.status_code == 200
+    ), f"Login failed with status {response.status_code}"
+
+    data = response.json()
+    token = data.get("token")
+    assert token is not None, "No valid JWT token recieved in login response"
+
+    with open("jwt-token/.env", "w") as f:
+        f.write(f"JWT_TOKEN={token}")
+    print("Token Acquired")
+
+if __name__ == "__main__":
+    test_login()
