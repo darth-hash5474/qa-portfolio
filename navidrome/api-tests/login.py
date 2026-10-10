@@ -12,29 +12,27 @@ BASE_URL = os.getenv("URL")
 USER = os.getenv("USERNAME")
 PASS = os.getenv("PASSWORD")
 
+# Kept separate from the main .env so saving the token never overwrites it
+TOKEN_FILE = "jwt-token/.env"
+
 
 def test_login():
-
     # Setup the payload and the url
     url = f"{BASE_URL}/auth/login"
-    payload = {"username":USER,"password":PASS}
+    payload = {"username": USER, "password": PASS}
 
-    response = requests.post(url=url, json=payload)
+    response = requests.post(url, json=payload)
+    assert response.status_code == 200, f"Login failed with status {response.status_code}"
 
-    # Use assert to catch any script errors easily
-    assert (
-        response.status_code == 200
-    ), f"Login failed with status {response.status_code}"
+    # Get the token from the response
+    token = response.json().get("token")
+    assert token is not None, "No valid JWT token received in login response"
 
-    # Return the token from the response
-    data = response.json()
-    token = data.get("token")
-    assert token is not None, "No valid JWT token recieved in login response"
-
-    # Save the token to jwt-token/.env, to avoid overwriting any current .env files
-    with open("jwt-token/.env", "w") as f:
+    # Save the token for the other scripts to use
+    with open(TOKEN_FILE, "w") as f:
         f.write(f"JWT_TOKEN={token}")
     print("Token Acquired")
+
 
 if __name__ == "__main__":
     test_login()

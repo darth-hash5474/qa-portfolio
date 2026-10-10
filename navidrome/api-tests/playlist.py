@@ -1,88 +1,79 @@
 import os
 import requests
 from smoke_test import URL
-from dotenv import load_dotenv
 
-load_dotenv()
+BASE_URL = f"{URL}/api"
+TOKEN_FILE = "jwt-token/.env"
 
-unique_id = os.getenv("UNIQUE_ID")
+# Boundary values for the playlist name
+OVERSIZED_NAME_LENGTH = 50000
+MAX_TRUNCATED_LENGTH = 255
 
-BASE_URL=f"{URL}/api"
 
 # Extract the token we got from login.py
 def get_stored_token():
-    if not os.path.exists("jwt-token/.env"):
+    if not os.path.exists(TOKEN_FILE):
         raise FileNotFoundError(
             "Missing JWT Token. Ensure login.py script has been run."
         )
-    with open("jwt-token/.env", "r") as f:
+    with open(TOKEN_FILE, "r") as f:
         line = f.read().strip()
-        return line.split("=")[1]
+        return line.split("=", 1)[1]
 
 
 def test_create_playlist():
-    token = get_stored_token()
-
     # Attach the token in the headers
     headers = {
-        "x-nd-authorization": f"Bearer {token}",
+        "x-nd-authorization": f"Bearer {get_stored_token()}",
         "Content-Type": "application/json",
     }
 
-    # Create a payload containing playlist data
-    url = f"{BASE_URL}/playlist"
-
-    # Create an altered payload containing 10,000 A's for boundary testing
-    big_name = "C" * 50000
-
+    # Create a payload with an oversized name for boundary testing
+    big_name = "C" * OVERSIZED_NAME_LENGTH
     payload = {
         "name": big_name,
         "comment": "Created via automated open-source API test pipeline",
-        "tracks": [], 
+        "tracks": [],
     }
 
     # Send the payload as a post request to create the playlist
-    response = requests.post(url, json=payload, headers=headers)
+    response = requests.post(f"{BASE_URL}/playlist", json=payload, headers=headers)
 
-    if response.status_code in [200, 201]:
-        print("Server accepted oversized payload.")
-
-        # Get the playlist id from the response data
-        response_data = response.json()
-        playlist_id = response_data.get("id")
-
-        if playlist_id:
-            print(f"Playlist created with ID {playlist_id}. Fectching to check title...")
-
-            # Fetch the playlist id from the server
-            url_get = f"{URL}/api/playlist/{playlist_id}"
-
-            get_response = requests.get(url_get, headers=headers)
-
-            if get_response.status_code == 200:
-                saved_playlist_data = get_response.json()
-                saved_name = saved_playlist_data.get("name")
-
-                # Check for a possible miscommunication between what we sent and what is saved in the database
-                try:
-                    assert saved_name == big_name
-                    print("Navidrome supports massive playlist titles.") # If none exists, than this bug is obsolete
-                except:
-                    # If there is miscommunication, we found a bug
-                    print(f"Error, Confirmed Bug Found: Sent length == {len(big_name)} || Saved Length == {len(saved_name)}")
-
-                    # Check for a mismatch in the truncation limit.
-                    assert len(saved_name) <= 255, f"Unusual truncation size: {len(saved_name)}"
-                    print(f" Success: System safely isolated and handled the silent truncation limit.")
-            else:
-                print(f"Failed to fetch playlist data for validation. Status:  {get_response.status_code}")
-
-        else:
-            print(f"Could not verifiy name field in response payload")
-
-    else:
+    # A server that refuses the oversized name should do so with a 400
+    if response.status_code not in [200, 201]:
         print(f"Server responded with status code: {response.status_code}")
         assert response.status_code == 400
+        return
+
+    print("Server accepted oversized payload.")
+
+    # Get the playlist id from the response data
+    playlist_id = response.json().get("id")
+    if not playlist_id:
+        print("Could not find playlist id in response payload")
+        return
+
+    print(f"Playlist created with ID {playlist_id}. Fetching to check title...")
+
+    # Fetch the playlist back from the server
+    get_response = requests.get(f"{BASE_URL}/playlist/{playlist_id}", headers=headers)
+    if get_response.status_code != 200:
+        print(f"Failed to fetch playlist data for validation. Status: {get_response.status_code}")
+        return
+
+    saved_name = get_response.json().get("name")
+
+    # The name was stored intact, so there is no truncation bug
+    if saved_name == big_name:
+        print("Navidrome supports massive playlist titles.")
+        return
+
+    # What we sent is not what was saved, so we found a bug
+    print(f"Error, Confirmed Bug Found: Sent length == {len(big_name)} || Saved Length == {len(saved_name)}")
+
+    # Check the name was cut at a sensible limit
+    assert len(saved_name) <= MAX_TRUNCATED_LENGTH, f"Unusual truncation size: {len(saved_name)}"
+    print("Success: System safely isolated and handled the silent truncation limit.")
 
 
 if __name__ == "__main__":
