@@ -5,7 +5,7 @@ Test automation projects: UI and API suites written in Python against real appli
 | Project | System under test | Status |
 |---|---|---|
 | [navidrome/](navidrome/) | [Navidrome](https://github.com/navidrome/navidrome), an open-source music server | In progress |
-| [game-library/](game-library/) | A small app built as a controlled system under test | Planned |
+| [game-library/](game-library/) | A small game library manager (FastAPI, SQLite, HTML and JavaScript) built as a controlled system under test, with bugs planted for the tests to find | In progress |
 
 ## Navidrome
 
@@ -98,3 +98,45 @@ pytest ui-tests -v      # headless by default; add --headed to watch the browser
 Two results are expected besides passes: the tests for the bugs above are marked `xfail` while those bugs are present, and the tests that need real tracks are skipped when the library has no songs.
 
 To run against your own Navidrome server instead, point `URL`, `USERNAME` and `PASSWORD` in `.env` at it. Navidrome allows 5 logins per 20 seconds by default and a full run of both suites uses all 5, so a second run started straight after the first fails with `429 Too Many Requests`. The compose file turns that limit off.
+
+## Game Library
+
+A game library manager built to be tested: add, edit, delete, search, filter, sort and page through games, with a stats panel. Because the app is ours, it can be tested at every level. It has eight bugs planted in it on purpose, four in the API and four in the UI, with nothing in the code marking where they are.
+
+Stack: Python, [FastAPI](https://fastapi.tiangolo.com/), SQLite, plain HTML and JavaScript. Unit and API tests use pytest; UI tests use [Playwright](https://playwright.dev/) in TypeScript.
+
+### Expected behaviour
+
+This is the specification the app is tested against.
+
+- **Title:** required, stored without surrounding spaces, 1 to 100 characters.
+- **Platform:** one of PC, PlayStation, Xbox, Switch, Mobile.
+- **Status:** one of backlog, playing, completed, dropped. Defaults to backlog.
+- **Genre:** optional, up to 30 characters.
+- **Rating:** optional whole number from 1 to 10. A game in the backlog cannot have one.
+- **Hours played:** a number from 0 to 100,000. Defaults to 0.
+- **Release year:** optional whole number from 1970 to 2100.
+- **Duplicates:** the same title on the same platform is rejected with a 409, ignoring letter case and surrounding spaces.
+- **Creating** answers 201 with the new game; **editing** saves every field and answers 200; **deleting** answers 204 and the game is gone. A game that doesn't exist answers 404, and a request that breaks a rule answers 422 naming the field.
+- **Search** matches any part of the title, ignoring letter case, and combines with the status and platform filters.
+- **Sorting** follows the label of the chosen option. Games with no value for the sort field come last.
+- **Paging:** ten games per page. The number of pages is the number of matching games divided by the page size, rounded up, and never less than one.
+- **Stats:** average rating is taken over rated games only, to one decimal place. Completion rate is the share of completed games as a rounded whole percentage.
+- **In the UI:** the count under the list is the total number of matching games; Cancel abandons an edit and returns the form to adding; the stats panel updates after every change; anything a user typed is shown as text, never treated as HTML.
+
+### Running it
+
+```bash
+cd game-library
+pip install -r requirements.txt
+uvicorn app.main:app --port 8000        # the app, at http://localhost:8000 (API docs at /docs)
+```
+
+```bash
+pytest tests/unit        # rules and library logic, no server needed
+pytest tests/api         # the API, run in-process against a temporary database
+npm install && npx playwright install chromium
+npm run test:ui          # the UI; starts the app itself
+```
+
+`POST /api/test/reset` puts the library back to its twelve starting games.

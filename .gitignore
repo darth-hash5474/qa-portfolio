@@ -5,3 +5,6 @@ __pycache__/
 report.html
 test-results/
 reports/
+node_modules/
+playwright-report/
+game-library/data/

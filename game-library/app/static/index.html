@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Game Library</h1>
+  </header>
+
+  <main>
+    <section aria-labelledby="stats-heading">
+      <h2 id="stats-heading">Stats</h2>
+      <dl class="stats">
+        <div><dt>Total games</dt><dd id="stat-total" data-testid="stat-total">–</dd></div>
+        <div><dt>Completed</dt><dd id="stat-completed" data-testid="stat-completed">–</dd></div>
+        <div><dt>Completion rate</dt><dd id="stat-completion-rate" data-testid="stat-completion-rate">–</dd></div>
+        <div><dt>Average rating</dt><dd id="stat-average-rating" data-testid="stat-average-rating">–</dd></div>
+        <div><dt>Hours played</dt><dd id="stat-total-hours" data-testid="stat-total-hours">–</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="form-heading">
+      <h2 id="form-heading">Add a game</h2>
+      <form id="game-form" novalidate>
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" autocomplete="off">
+          <p class="field-error" data-error-for="title"></p>
+        </div>
+        <div class="field">
+          <label for="platform">Platform</label>
+          <select id="platform" name="platform"></select>
+          <p class="field-error" data-error-for="platform"></p>
+        </div>
+        <div class="field">
+          <label for="genre">Genre</label>
+          <input id="genre" name="genre" type="text" autocomplete="off">
+          <p class="field-error" data-error-for="genre"></p>
+        </div>
+        <div class="field">
+          <label for="status">Status</label>
+          <select id="status" name="status"></select>
+          <p class="field-error" data-error-for="status"></p>
+        </div>
+        <div class="field">
+          <label for="rating">Rating (1–10)</label>
+          <input id="rating" name="rating" type="number" step="1">
+          <p class="field-error" data-error-for="rating"></p>
+        </div>
+        <div class="field">
+          <label for="hours_played">Hours played</label>
+          <input id="hours_played" name="hours_played" type="number" step="0.5">
+          <p class="field-error" data-error-for="hours_played"></p>
+        </div>
+        <div class="field">
+          <label for="release_year">Release year</label>
+          <input id="release_year" name="release_year" type="number" step="1">
+          <p class="field-error" data-error-for="release_year"></p>
+        </div>
+        <div class="form-actions">
+          <button type="submit" id="save-button">Add game</button>
+          <button type="button" id="cancel-button" hidden>Cancel</button>
+        </div>
+        <p id="form-error" class="form-error" role="alert"></p>
+      </form>
+    </section>
+
+    <section aria-labelledby="list-heading">
+      <h2 id="list-heading">Games</h2>
+
+      <div class="filters">
+        <div class="field">
+          <label for="search">Search</label>
+          <input id="search" type="search" placeholder="Search by title">
+        </div>
+        <div class="field">
+          <label for="filter-status">Status</label>
+          <select id="filter-status"><option value="">All statuses</option></select>
+        </div>
+        <div class="field">
+          <label for="filter-platform">Platform</label>
+          <select id="filter-platform"><option value="">All platforms</option></select>
+        </div>
+        <div class="field">
+          <label for="sort">Sort by</label>
+          <select id="sort">
+            <option value="title:asc">Title (A to Z)</option>
+            <option value="title:desc">Title (Z to A)</option>
+            <option value="rating:desc">Rating (high to low)</option>
+            <option value="rating:asc">Rating (low to high)</option>
+            <option value="hours_played:desc">Hours played (most first)</option>
+            <option value="release_year:desc">Release year (newest first)</option>
+            <option value="release_year:desc">Release year (oldest first)</option>
+            <option value="created_at:desc">Recently added</option>
+          </select>
+        </div>
+      </div>
+
+      <table id="games-table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Platform</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Status</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Hours</th>
+            <th scope="col">Year</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="games-body"></tbody>
+      </table>
+      <p id="empty-message" hidden>No games found.</p>
+
+      <nav class="pagination" aria-label="Pagination">
+        <button type="button" id="previous-page">Previous</button>
+        <span id="page-info" data-testid="page-info"></span>
+        <button type="button" id="next-page">Next</button>
+        <span id="result-count" data-testid="result-count"></span>
+      </nav>
+    </section>
+  </main>
+
+  <dialog id="delete-dialog" aria-labelledby="delete-message">
+    <p id="delete-message"></p>
+    <div class="form-actions">
+      <button type="button" id="delete-cancel">Cancel</button>
+      <button type="button" id="delete-confirm" class="danger">Delete</button>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

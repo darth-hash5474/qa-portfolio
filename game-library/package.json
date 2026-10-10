@@ -1,0 +1,13 @@
+{
+  "name": "game-library-ui-tests",
+  "private": true,
+  "description": "Playwright UI tests for the Game Library",
+  "scripts": {
+    "test:ui": "playwright test",
+    "test:ui:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "^22.0.0"
+  }
+}
