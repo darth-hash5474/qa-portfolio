@@ -21,14 +21,17 @@ def test_login():
 
     response = requests.post(url=url, json=payload)
 
+    # Use assert to catch any script errors easily
     assert (
         response.status_code == 200
     ), f"Login failed with status {response.status_code}"
 
+    # Return the token from the response
     data = response.json()
     token = data.get("token")
     assert token is not None, "No valid JWT token recieved in login response"
 
+    # Save the token to jwt-token/.env, to avoid overwriting any current .env files
     with open("jwt-token/.env", "w") as f:
         f.write(f"JWT_TOKEN={token}")
     print("Token Acquired")
