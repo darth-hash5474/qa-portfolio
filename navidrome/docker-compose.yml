@@ -1,0 +1,21 @@
+# Navidrome test server for the API and UI suites.
+# Start with: docker compose up -d   (run from this folder so .env is picked up)
+services:
+  navidrome:
+    image: ghcr.io/navidrome/navidrome:0.64.2
+    container_name: navidrome-test
+    ports:
+      - "8080:4533"
+    environment:
+      # Creates the "admin" user on first start, using PASSWORD from .env
+      ND_DEVAUTOCREATEADMINPASSWORD: ${PASSWORD:?Set PASSWORD in .env}
+      # Turn off the login rate limit (default: 5 logins per 20s) so repeated test runs don't get 429s
+      ND_AUTHREQUESTLIMIT: 0
+    volumes:
+      - navidrome-data:/data
+      - navidrome-music:/music
+    restart: unless-stopped
+
+volumes:
+  navidrome-data:
+  navidrome-music:

@@ -18,7 +18,7 @@ Stack: Python, [requests](https://requests.readthedocs.io/), [Playwright](https:
 | [test_smoke.py](navidrome/api-tests/test_smoke.py) | The server is reachable. |
 | [test_login.py](navidrome/api-tests/test_login.py) | `POST /auth/login` returns 200 and a JWT. |
 | [test_playlist.py](navidrome/api-tests/test_playlist.py) | Boundary test: creates a playlist with a 50,000-character name. Passes if the server refuses it with a 400 or stores it intact; fails if the name is silently truncated. |
-| [test_tracks.py](navidrome/api-tests/test_tracks.py) | Adds tracks to a playlist through `POST /api/playlist/{id}/tracks`. A control adds real song IDs and expects them saved; the main test sends IDs that don't exist and expects a 400 or 422 with nothing saved. |
+| [test_tracks.py](navidrome/api-tests/test_tracks.py) | Adds tracks to a playlist through `POST /api/playlist/{id}/tracks`. A control adds real song IDs and expects them saved. Two more tests send IDs that don't exist, alone and mixed with real ones, and expect a rejection or an `added` count that matches what was saved. |
 
 Shared setup lives in [conftest.py](navidrome/api-tests/conftest.py): one login per run, and a fixture that deletes any playlist a test creates.
 
@@ -37,9 +37,9 @@ Screens are wrapped in page objects in [pages.py](navidrome/ui-tests/pages.py). 
 **Adding tracks to a playlist reports success for invalid track IDs.** Found with [test_tracks.py](navidrome/api-tests/test_tracks.py).
 
 - **Version:** Navidrome 0.64.2
-- **Steps:** `POST /api/playlist/{id}/tracks` with an `ids` array containing only non-existent or malformed track IDs.
-- **Expected:** the request is rejected with 400 Bad Request or 422 Unprocessable Entity.
-- **Actual:** the server returns 200 OK with `{"added":7}` for 7 invalid IDs, but the playlist has 0 tracks afterwards.
+- **Steps:** `POST /api/playlist/{id}/tracks` with an `ids` array containing non-existent or malformed track IDs, alone or mixed with real ones.
+- **Expected:** the request is rejected with 400 Bad Request or 422 Unprocessable Entity, or `added` reports the number of tracks actually saved.
+- **Actual:** the server returns 200 OK and `added` counts every ID sent. 3 real IDs plus 2 invalid ones gives `{"added":5}` with 3 tracks saved; 7 invalid IDs gives `{"added":7}` with 0 saved.
 - **Impact:** the response tells the client the tracks were added, so its state is out of sync with the saved playlist.
 
 ### Running the tests
@@ -63,7 +63,7 @@ API tests:
 pytest navidrome/api-tests -v
 ```
 
-Two results are expected besides passes: the invalid track ID test is marked `xfail` while the bug above is present, and the valid track control is skipped when the library has no songs.
+Two results are expected besides passes: the two invalid track ID tests are marked `xfail` while the bug above is present, and the tests that need real tracks are skipped when the library has no songs.
 
 UI tests (headless by default; add `--headed` to watch the browser):
 
