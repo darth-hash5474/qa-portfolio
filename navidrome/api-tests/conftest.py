@@ -26,6 +26,11 @@ def api_url():
     return f"{BASE_URL}/api"
 
 
+@pytest.fixture(scope="session")
+def credentials():
+    return USER, PASS
+
+
 # Log in once per test run and share the response with every test that needs it
 @pytest.fixture(scope="session")
 def login_response():
@@ -51,8 +56,13 @@ def auth_headers(login_response):
 def create_playlist(api_url, auth_headers):
     created_ids = []
 
-    def _create_playlist(name):
-        response = requests.post(f"{api_url}/playlist", json={"name": name}, headers=auth_headers, timeout=TIMEOUT)
+    # Leave name out to send a payload without one; extra fields go in as keyword arguments
+    def _create_playlist(name=None, **fields):
+        payload = dict(fields)
+        if name is not None:
+            payload["name"] = name
+
+        response = requests.post(f"{api_url}/playlist", json=payload, headers=auth_headers, timeout=TIMEOUT)
         if response.status_code in [200, 201]:
             created_ids.append(response.json().get("id"))
         return response

@@ -16,8 +16,10 @@ Stack: Python, [requests](https://requests.readthedocs.io/), [Playwright](https:
 | Test file | What it checks |
 |---|---|
 | [test_smoke.py](navidrome/api-tests/test_smoke.py) | The server is reachable. |
-| [test_login.py](navidrome/api-tests/test_login.py) | `POST /auth/login` returns 200 and a JWT. |
-| [test_playlist.py](navidrome/api-tests/test_playlist.py) | Boundary test: creates a playlist with a 50,000-character name. Passes if the server refuses it with a 400 or stores it intact; fails if the name is silently truncated. |
+| [test_auth.py](navidrome/api-tests/test_auth.py) | Requests with no token, an empty token or a made-up token get a 401. |
+| [test_login.py](navidrome/api-tests/test_login.py) | `POST /auth/login` returns 200 and a JWT; a wrong password gets a 401 and no token. |
+| [test_playlist.py](navidrome/api-tests/test_playlist.py) | Playlist lifecycle (create, read, rename, delete), 404s for a playlist that doesn't exist, rejection of malformed JSON and wrong-typed names, special characters stored intact, pagination and filtering by name. Boundary tests: a 50,000-character name must be refused or stored intact, and a playlist without a name must be refused. |
+| [test_subsonic.py](navidrome/api-tests/test_subsonic.py) | Subsonic API ping succeeds with valid credentials and reports error 40 for a wrong password. |
 | [test_tracks.py](navidrome/api-tests/test_tracks.py) | Adds tracks to a playlist through `POST /api/playlist/{id}/tracks`. A control adds real song IDs and expects them saved. Two more tests send IDs that don't exist, alone and mixed with real ones, and expect a rejection or an `added` count that matches what was saved. |
 
 Shared setup lives in [conftest.py](navidrome/api-tests/conftest.py): one login per run, and a fixture that deletes any playlist a test creates.
@@ -42,9 +44,17 @@ Screens are wrapped in page objects in [pages.py](navidrome/ui-tests/pages.py). 
 - **Actual:** the server returns 200 OK and `added` counts every ID sent. 3 real IDs plus 2 invalid ones gives `{"added":5}` with 3 tracks saved; 7 invalid IDs gives `{"added":7}` with 0 saved.
 - **Impact:** the response tells the client the tracks were added, so its state is out of sync with the saved playlist.
 
+**The API creates playlists with no name.** Found with [test_playlist.py](navidrome/api-tests/test_playlist.py).
+
+- **Version:** Navidrome 0.64.2
+- **Steps:** `POST /api/playlist` with `{"name": ""}`, `{"name": "   "}` or no `name` field at all.
+- **Expected:** the request is rejected with 400 or 422. The web form marks the name as required and keeps Save disabled without one.
+- **Actual:** the server returns 200 OK and creates the playlist with the name stored as sent.
+- **Impact:** the rule the UI enforces can be bypassed through the API, leaving playlists with nothing to identify them by.
+
 ### Running the tests
 
-You need Python 3 and a running Navidrome instance with a user account.
+You need Python 3 and Docker.
 
 ```bash
 # Install dependencies
@@ -53,22 +63,38 @@ source .venv/bin/activate
 pip install -r navidrome/requirements.txt
 playwright install chromium
 
-# Configure the server URL and credentials
-cp navidrome/.env.example navidrome/.env   # then fill in USERNAME and PASSWORD
+# Configure the credentials
+cp navidrome/.env.example navidrome/.env   # then set USERNAME=admin and choose a PASSWORD
 ```
 
-API tests:
+Start the test server. [docker-compose.yml](navidrome/docker-compose.yml) runs Navidrome 0.64.2 on `http://localhost:8080` and creates the `admin` user with the password from `.env`:
+
+```bash
+cd navidrome
+docker compose up -d
+```
+
+Add some music. The track tests need real songs, so this generates five short tagged tones with the ffmpeg inside the container, then asks Navidrome to scan them:
+
+```bash
+for i in 1 2 3 4 5; do
+  docker exec navidrome-test ffmpeg -hide_banner -loglevel error \
+    -f lavfi -i "sine=frequency=$((200 + i * 100)):duration=5" \
+    -metadata title="Test Track $i" -metadata artist="QA Artist" \
+    -metadata album="QA Album" -metadata track="$i" \
+    -y "/music/test-track-$i.mp3"
+done
+
+curl "http://localhost:8080/rest/startScan.view?u=admin&p=<your password>&v=1.16.1&c=setup&f=json"
+```
+
+Run the tests from the repo root:
 
 ```bash
 pytest navidrome/api-tests -v
+pytest navidrome/ui-tests -v      # headless by default; add --headed to watch the browser
 ```
 
-Two results are expected besides passes: the two invalid track ID tests are marked `xfail` while the bug above is present, and the tests that need real tracks are skipped when the library has no songs.
+Two results are expected besides passes: the tests for the bugs above are marked `xfail` while those bugs are present, and the tests that need real tracks are skipped when the library has no songs.
 
-UI tests (headless by default; add `--headed` to watch the browser):
-
-```bash
-pytest navidrome/ui-tests -v
-```
-
-Navidrome allows 5 logins per 20 seconds and a full run uses 4, so a second run started straight after the first fails with `429 Too Many Requests`. Wait 20 seconds between runs, or start the test server with `ND_AUTHREQUESTLIMIT=0` to turn the limit off.
+To run against your own Navidrome server instead, point `URL`, `USERNAME` and `PASSWORD` in `.env` at it. Navidrome allows 5 logins per 20 seconds by default and a full run of both suites uses all 5, so a second run started straight after the first fails with `429 Too Many Requests`. The compose file turns that limit off.
