@@ -1,3 +1,4 @@
+import json
 import os
 import re
 import pytest
@@ -58,18 +59,49 @@ def logged_in_page(browser, app_url, auth_state):
     context.close()
 
 
+# API headers using the token the browser session already holds, for test setup and cleanup
+@pytest.fixture(scope="session")
+def api_headers(auth_state):
+    state = json.loads(auth_state.read_text())
+    local_storage = state["origins"][0]["localStorage"]
+    token = next(item["value"] for item in local_storage if item["name"] == "token")
+    return {"x-nd-authorization": f"Bearer {token}"}
+
+
+def delete_playlists(app_url, api_headers, names):
+    playlists = requests.get(f"{app_url}/api/playlist", headers=api_headers, timeout=10).json()
+    for playlist in playlists:
+        if playlist["name"] in names:
+            requests.delete(f"{app_url}/api/playlist/{playlist['id']}", headers=api_headers, timeout=10)
+
+
 # Deletes playlists by name through the API once the test finishes, so UI tests leave nothing behind
 @pytest.fixture
-def playlist_cleanup(logged_in_page, app_url):
+def playlist_cleanup(app_url, api_headers):
     names = []
 
     yield names
 
-    # Reuse the token the browser session already holds
-    token = logged_in_page.evaluate("localStorage.getItem('token')")
-    headers = {"x-nd-authorization": f"Bearer {token}"}
+    delete_playlists(app_url, api_headers, names)
 
-    playlists = requests.get(f"{app_url}/api/playlist", headers=headers, timeout=10).json()
-    for playlist in playlists:
-        if playlist["name"] in names:
-            requests.delete(f"{app_url}/api/playlist/{playlist['id']}", headers=headers, timeout=10)
+
+# Creates a playlist through the API so a test can start from existing data
+@pytest.fixture
+def make_playlist(app_url, api_headers, playlist_cleanup):
+    def _make_playlist(name, comment=""):
+        payload = {"name": name, "comment": comment}
+        response = requests.post(f"{app_url}/api/playlist", json=payload, headers=api_headers, timeout=10)
+        assert response.status_code == 200, f"Could not create playlist: {response.status_code}"
+        playlist_cleanup.append(name)
+        return response.json()["id"]
+
+    return _make_playlist
+
+
+# Titles of the songs in the library, for tests that need real tracks
+@pytest.fixture
+def song_titles(app_url, api_headers):
+    songs = requests.get(f"{app_url}/api/song", headers=api_headers, timeout=10).json()
+    if not songs:
+        pytest.skip("No songs on the server. Run seed.py to add test tracks.")
+    return [song["title"] for song in songs]

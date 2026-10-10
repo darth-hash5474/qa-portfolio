@@ -32,9 +32,11 @@ Shared setup lives in [conftest.py](navidrome/api-tests/conftest.py): one login 
 |---|---|
 | [test_ui_smoke.py](navidrome/ui-tests/test_ui_smoke.py) | The app loads in Chromium with the right title. |
 | [test_ui_login.py](navidrome/ui-tests/test_ui_login.py) | A valid login opens the library, a wrong password shows an "Unauthorized" error and stays on the login page, and logout returns to the login page. |
-| [test_ui_playlist.py](navidrome/ui-tests/test_ui_playlist.py) | Save is disabled until a playlist has a name, and a playlist created through the form appears in the sidebar. |
+| [test_ui_navigation.py](navidrome/ui-tests/test_ui_navigation.py) | A signed-out visitor is sent to the login page, and each sidebar link opens its section. |
+| [test_ui_playlist.py](navidrome/ui-tests/test_ui_playlist.py) | Save is disabled until a playlist has a name, a playlist created through the form appears in the sidebar, the details page shows its name and comment, and a playlist can be renamed and deleted from the edit form. |
+| [test_ui_songs.py](navidrome/ui-tests/test_ui_songs.py) | The songs list shows every seeded track, search narrows it to the matching song, and a search with no match shows an empty message. |
 
-Screens are wrapped in page objects in [pages.py](navidrome/ui-tests/pages.py). [conftest.py](navidrome/ui-tests/conftest.py) signs in once through the login form and reuses that browser state, and deletes any playlist a test creates.
+Screens are wrapped in page objects in [pages.py](navidrome/ui-tests/pages.py). [conftest.py](navidrome/ui-tests/conftest.py) signs in once through the login form and reuses that browser state, creates test playlists through the API, and deletes any playlist a test creates.
 
 ### Findings
 
