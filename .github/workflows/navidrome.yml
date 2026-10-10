@@ -1,0 +1,66 @@
+name: Navidrome tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "navidrome/**"
+      - ".github/workflows/navidrome.yml"
+  pull_request:
+    paths:
+      - "navidrome/**"
+      - ".github/workflows/navidrome.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    # Credentials for the throwaway server started below; it only exists inside this job
+    env:
+      URL: http://localhost:8080
+      USERNAME: admin
+      PASSWORD: ci-test-password
+
+    defaults:
+      run:
+        working-directory: navidrome
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: navidrome/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Start Navidrome
+        run: docker compose up -d
+
+      - name: Seed test tracks
+        run: python seed.py
+
+      - name: Run API tests
+        run: pytest api-tests -v --html=reports/api-report.html --self-contained-html
+
+      - name: Run UI tests
+        if: ${{ !cancelled() }}
+        run: pytest ui-tests -v --html=reports/ui-report.html --self-contained-html --tracing retain-on-failure --output reports/traces
+
+      - name: Show Navidrome logs
+        if: failure()
+        run: docker compose logs
+
+      - name: Upload test reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: navidrome/reports/

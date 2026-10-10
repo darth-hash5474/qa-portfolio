@@ -9,6 +9,8 @@ Test automation projects: UI and API suites written in Python against real appli
 
 ## Navidrome
 
+[![Navidrome tests](https://github.com/darth-hash5474/qa-portfolio/actions/workflows/navidrome.yml/badge.svg)](https://github.com/darth-hash5474/qa-portfolio/actions/workflows/navidrome.yml)
+
 Stack: Python, [requests](https://requests.readthedocs.io/), [Playwright](https://playwright.dev/python/), pytest, pytest-playwright.
 
 ### API tests
@@ -36,7 +38,7 @@ Screens are wrapped in page objects in [pages.py](navidrome/ui-tests/pages.py). 
 
 ### Findings
 
-**Adding tracks to a playlist reports success for invalid track IDs.** Found with [test_tracks.py](navidrome/api-tests/test_tracks.py).
+**Adding tracks to a playlist reports success for invalid track IDs.** Found with [test_tracks.py](navidrome/api-tests/test_tracks.py). Reported upstream as [navidrome/navidrome#6310](https://github.com/navidrome/navidrome/issues/6310).
 
 - **Version:** Navidrome 0.64.2
 - **Steps:** `POST /api/playlist/{id}/tracks` with an `ids` array containing non-existent or malformed track IDs, alone or mixed with real ones.
@@ -51,6 +53,10 @@ Screens are wrapped in page objects in [pages.py](navidrome/ui-tests/pages.py). 
 - **Expected:** the request is rejected with 400 or 422. The web form marks the name as required and keeps Save disabled without one.
 - **Actual:** the server returns 200 OK and creates the playlist with the name stored as sent.
 - **Impact:** the rule the UI enforces can be bypassed through the API, leaving playlists with nothing to identify them by.
+
+### Continuous integration
+
+[navidrome.yml](.github/workflows/navidrome.yml) runs on every push and pull request that touches `navidrome/`. It starts the test server with Docker Compose, seeds the tracks, runs both suites, and uploads HTML reports (plus Playwright traces for any failed UI test) as a build artifact.
 
 ### Running the tests
 
@@ -74,25 +80,17 @@ cd navidrome
 docker compose up -d
 ```
 
-Add some music. The track tests need real songs, so this generates five short tagged tones with the ffmpeg inside the container, then asks Navidrome to scan them:
+Add some music. The track tests need real songs, so [seed.py](navidrome/seed.py) generates five short tagged tones with the ffmpeg inside the container and waits for Navidrome to scan them:
 
 ```bash
-for i in 1 2 3 4 5; do
-  docker exec navidrome-test ffmpeg -hide_banner -loglevel error \
-    -f lavfi -i "sine=frequency=$((200 + i * 100)):duration=5" \
-    -metadata title="Test Track $i" -metadata artist="QA Artist" \
-    -metadata album="QA Album" -metadata track="$i" \
-    -y "/music/test-track-$i.mp3"
-done
-
-curl "http://localhost:8080/rest/startScan.view?u=admin&p=<your password>&v=1.16.1&c=setup&f=json"
+python seed.py
 ```
 
-Run the tests from the repo root:
+Run the tests:
 
 ```bash
-pytest navidrome/api-tests -v
-pytest navidrome/ui-tests -v      # headless by default; add --headed to watch the browser
+pytest api-tests -v
+pytest ui-tests -v      # headless by default; add --headed to watch the browser
 ```
 
 Two results are expected besides passes: the tests for the bugs above are marked `xfail` while those bugs are present, and the tests that need real tracks are skipped when the library has no songs.

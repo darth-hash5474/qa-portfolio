@@ -4,7 +4,8 @@ import requests
 # IDs that do not match any song on the server
 INVALID_TRACK_IDS = [f"mock-track-id-{i}" for i in range(5)] + ["!!not-an-id!!", "12345"]
 
-KNOWN_BUG = 'Known bug in Navidrome 0.64.2: "added" counts the ids sent, not the tracks saved'
+# https://github.com/navidrome/navidrome/issues/6310
+KNOWN_BUG = 'Navidrome #6310: "added" counts the ids sent, not the tracks saved'
 
 
 # Real track ids from the library
