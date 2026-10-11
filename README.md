@@ -126,7 +126,7 @@ This is the specification the app is tested against.
 
 ### Findings
 
-Planted bugs found so far: 1 of 8.
+Planted bugs found so far: 2 of 8.
 
 **A title of exactly 100 characters is rejected.** Found with [test_game_post.py](game-library/tests/api/test_game_post.py).
 
@@ -134,6 +134,13 @@ Planted bugs found so far: 1 of 8.
 - **Expected:** 201 and the game is created. The spec allows titles of 1 to 100 characters.
 - **Actual:** 422 with "Title must be 100 characters or fewer."
 - **Notes:** a 99-character title is accepted and a 101-character title is rejected, so the upper boundary is off by one.
+
+**A duplicate title in a different letter case is accepted.** Found with [test_game_duplicates.py](game-library/tests/api/test_game_duplicates.py).
+
+- **Steps:** with "Hades" on PC already in the library, `POST /api/games` with title "hades" and platform PC.
+- **Expected:** 409. The spec says duplicates are detected ignoring letter case.
+- **Actual:** 201 and a second copy of the game is created.
+- **Notes:** the same request with the title spelled "Hades" is correctly rejected with a 409, so only the case-insensitive part of the check is missing.
 
 ### Running it
 

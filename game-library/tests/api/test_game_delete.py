@@ -1,6 +1,6 @@
 # Deletion Test
 def test_delete_game(client):
-    # Monument Valley in the seeded games
+    # Disco Elysium in the seeded games
     game_id = 7
 
     # Send a delete request
