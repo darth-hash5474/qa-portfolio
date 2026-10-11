@@ -186,7 +186,7 @@ npm run test:ui          # the UI; starts the app itself
 
 [![Portfolio site](https://github.com/darth-hash5474/qa-portfolio/actions/workflows/portfolio-site.yml/badge.svg)](https://github.com/darth-hash5474/qa-portfolio/actions/workflows/portfolio-site.yml)
 
-A single static page, plain HTML and CSS with no build step, in [portfolio-site/site/](portfolio-site/site/). Every claim on it links to the code that backs it, and the tests enforce that.
+Live at [gaving.dev](https://gaving.dev/). A single static page, plain HTML and CSS with no build step, in [portfolio-site/site/](portfolio-site/site/). Every claim on it links to the code that backs it, and the tests enforce that.
 
 | Test file | What it checks |
 |---|---|
@@ -195,7 +195,7 @@ A single static page, plain HTML and CSS with no build step, in [portfolio-site/
 | [accessibility.spec.ts](portfolio-site/tests/accessibility.spec.ts) | An axe scan against WCAG 2.1 AA on desktop and phone, heading order, the skip link, and reaching every link by keyboard. |
 | [layout.spec.ts](portfolio-site/tests/layout.spec.ts) | No sideways scrolling from 320px to 1920px wide, the column layout at each size, and reduced-motion behaviour. |
 
-[portfolio-site.yml](.github/workflows/portfolio-site.yml) runs these on every push that touches the site and, when they pass on `main`, publishes the site to GitHub Pages.
+[portfolio-site.yml](.github/workflows/portfolio-site.yml) runs these on every push that touches the site and, when they pass on `main`, publishes the site to GitHub Pages, which serves it at gaving.dev.
 
 ```bash
 cd portfolio-site

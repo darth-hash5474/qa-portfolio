@@ -24,7 +24,7 @@ test("the page has a title, description and address for link previews", async ({
   await expect(page.locator('meta[property="og:description"]')).toHaveAttribute("content", /.{30,}/);
   await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
     "content",
-    "https://darth-hash5474.github.io/qa-portfolio/",
+    "https://gaving.dev/",
   );
 });
 
