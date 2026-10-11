@@ -18,6 +18,16 @@ test("the page has a description for search results and link previews", async ({
   expect(description!.length).toBeLessThan(200);
 });
 
+// These tags are what LinkedIn and chat apps show when the link is shared
+test("the page has a title, description and address for link previews", async ({ page }) => {
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /Gavin Griffith/);
+  await expect(page.locator('meta[property="og:description"]')).toHaveAttribute("content", /.{30,}/);
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+    "content",
+    "https://darth-hash5474.github.io/qa-portfolio/",
+  );
+});
+
 // Every claim in the opening list must come with at least one link to its evidence
 test("each opening claim links to evidence", async ({ page }) => {
   const claims = page.locator(".checks li");
