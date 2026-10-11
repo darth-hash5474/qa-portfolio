@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-site-tests",
+  "private": true,
+  "description": "Playwright and axe tests for the portfolio site",
+  "scripts": {
+    "start": "python3 -m http.server 4173 --directory site",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@playwright/test": "1.63.0",
+    "@types/node": "^22.0.0"
+  }
+}

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gavin Griffith | Self-taught QA engineer</title>
+  <meta name="description" content="Gavin Griffith is a self-taught QA engineer. This page lists his test automation projects, skills and the bugs his tests found, each linked to the code behind it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top">Gavin Griffith</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#background">Background</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <h1>Self-taught QA engineer</h1>
+      <p class="lede">
+        I'm Gavin Griffith. I learned test automation by doing it, and this page only claims what
+        my repository can prove. Every line below links to the code behind it.
+      </p>
+
+      <ul class="checks" aria-label="What the repository shows">
+        <li>
+          <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg>
+          <span class="claim">Found a bug in an open-source project, confirmed by its maintainer</span>
+          <a class="evidence" href="https://github.com/navidrome/navidrome/issues/6310">Navidrome issue 6310</a>
+        </li>
+        <li>
+          <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg>
+          <span class="claim">Tests at every layer: unit, API and browser</span>
+          <a class="evidence" href="https://github.com/darth-hash5474/qa-portfolio/tree/main/game-library/tests">Game Library test suites</a>
+        </li>
+        <li>
+          <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg>
+          <span class="claim">Browser automation in Python and in TypeScript</span>
+          <a class="evidence" href="https://github.com/darth-hash5474/qa-portfolio/tree/main/navidrome/ui-tests">Python suite</a>
+          <a class="evidence" href="https://github.com/darth-hash5474/qa-portfolio/tree/main/game-library/tests/ui">TypeScript suite</a>
+        </li>
+        <li>
+          <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg>
+          <span class="claim">Every push runs the suites in CI</span>
+          <a class="evidence" href="https://github.com/darth-hash5474/qa-portfolio/actions">GitHub Actions runs</a>
+        </li>
+        <li>
+          <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.8"/></svg>
+          <span class="claim">This page is tested too</span>
+          <a class="evidence" href="https://github.com/darth-hash5474/qa-portfolio/tree/main/portfolio-site/tests">Tests for this site</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+
+      <article class="project">
+        <div class="project-name">
+          <h3>Navidrome</h3>
+          <p>Python, pytest, requests, Playwright, Docker Compose</p>
+        </div>
+        <div class="project-body">
+          <p>
+            Navidrome is an open-source music server, so this is testing from the outside: all I had
+            was the running app and its API. The suite starts a throwaway server, fills it with
+            generated audio, then runs more than forty API and browser tests against it.
+          </p>
+
+          <h4>What the tests found</h4>
+          <ul class="findings">
+            <li>
+              <span class="status status-reported">Confirmed, fix in review</span>
+              <p>
+                Adding tracks to a playlist counted track IDs that don't exist as added. The
+                maintainer confirmed it and opened a fix, which I verified against the patched build.
+                <a href="https://github.com/navidrome/navidrome/issues/6310">Read the issue</a>
+              </p>
+            </li>
+            <li>
+              <span class="status status-documented">Documented</span>
+              <p>The API creates playlists with no name, which the web form forbids.</p>
+            </li>
+          </ul>
+
+          <p class="project-links">
+            <a href="https://github.com/darth-hash5474/qa-portfolio/tree/main/navidrome">Navidrome test code</a>
+            <a href="https://github.com/darth-hash5474/qa-portfolio/actions/workflows/navidrome.yml">Navidrome CI runs</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-name">
+          <h3>Game Library</h3>
+          <p>FastAPI, SQLite, pytest, Playwright in TypeScript</p>
+        </div>
+        <div class="project-body">
+          <p>
+            A small game tracker built to be tested, with a written spec and four bugs planted in it,
+            unmarked. Because the app's code is in the repository, it is tested at three levels:
+            more than eighty unit tests on the rules, API tests that run the app in-process, and
+            more than fifty browser tests.
+          </p>
+
+          <h4>What the tests found</h4>
+          <ul class="findings">
+            <li>
+              <span class="status status-planted">Planted, found</span>
+              <p>A title of exactly 100 characters is rejected, though the limit is 100. An off-by-one at the boundary.</p>
+            </li>
+            <li>
+              <span class="status status-planted">Planted, found</span>
+              <p>The duplicate check misses the same title in a different letter case.</p>
+            </li>
+            <li>
+              <span class="status status-planted">Planted, found</span>
+              <p>After cancelling an edit, adding a new game overwrites the game that was being edited.</p>
+            </li>
+            <li>
+              <span class="status status-planted">Planted, found</span>
+              <p>The count under the list shows the games on the page, not the total.</p>
+            </li>
+          </ul>
+
+          <p class="project-links">
+            <a href="https://github.com/darth-hash5474/qa-portfolio/tree/main/game-library">Game Library code and tests</a>
+            <a href="https://github.com/darth-hash5474/qa-portfolio/actions/workflows/game-library.yml">Game Library CI runs</a>
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <p class="section-intro">Each one links to a file where you can see it used.</p>
+
+      <dl class="skills">
+        <div>
+          <dt>Test design</dt>
+          <dd>
+            <ul>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/game-library/tests/unit/test_rules.py">Boundary value tests</a> on every field limit</li>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/navidrome/api-tests/test_auth.py">Negative tests</a> for missing and invalid credentials</li>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/navidrome/api-tests/conftest.py">Fixtures</a> that create and clean up their own test data</li>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/navidrome/api-tests/test_tracks.py">Expected-failure tests</a> that pin a known bug until it is fixed</li>
+            </ul>
+          </dd>
+        </div>
+        <div>
+          <dt>API testing</dt>
+          <dd>
+            <ul>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/tree/main/navidrome/api-tests">pytest and requests</a> against a live REST API</li>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/game-library/tests/api/conftest.py">In-process API tests</a> with a fresh database for each test</li>
+            </ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Browser testing</dt>
+          <dd>
+            <ul>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/navidrome/ui-tests/pages.py">Page objects</a> with Playwright in Python</li>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/game-library/tests/ui/helpers.ts">Shared helpers</a> with Playwright in TypeScript</li>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/portfolio-site/tests/accessibility.spec.ts">Accessibility checks</a> with axe</li>
+            </ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Tooling</dt>
+          <dd>
+            <ul>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/tree/main/.github/workflows">GitHub Actions</a> pipelines for each project</li>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/navidrome/docker-compose.yml">Docker Compose</a> for a repeatable test server</li>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/navidrome/seed.py">Seed scripts</a> for test data</li>
+            </ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Bug reporting</dt>
+          <dd>
+            <ul>
+              <li><a href="https://github.com/darth-hash5474/qa-portfolio/blob/main/README.md">Write-ups</a> with steps, expected and actual results</li>
+              <li><a href="https://github.com/navidrome/navidrome/issues/6310">An upstream issue</a> with a minimal reproduction, confirmed and fixed</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="background" aria-labelledby="background-heading">
+      <h2 id="background-heading">Background</h2>
+      <div class="background">
+        <div class="prose">
+          <p>
+            I don't have a computer science degree. I taught myself testing the way I'd want any
+            tester to learn it: pick real software, try to break it, and write down exactly what
+            happened.
+          </p>
+          <p>
+            The repository is the record of that. It started as a few scripts and grew one step at
+            a time, and the commit history shows each step.
+          </p>
+        </div>
+
+        <ol class="steps" aria-label="How the repository grew">
+          <li>Plain Python scripts that called an API and printed what came back.</li>
+          <li>A pytest suite, with fixtures and assertions that can actually fail.</li>
+          <li>Browser tests with Playwright and page objects.</li>
+          <li>A test server in Docker Compose, and every suite running in GitHub Actions.</li>
+          <li>A bug found in Navidrome and reported upstream.</li>
+          <li>An app with planted bugs, tested at unit, API and browser level.</li>
+          <li>This site, with tests of its own.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p class="section-intro">The quickest way to see how I work is to read the code. To talk, message me on LinkedIn.</p>
+      <ul class="contact-links">
+        <li><a href="https://github.com/darth-hash5474/qa-portfolio">The qa-portfolio repository</a></li>
+        <li><a href="https://github.com/darth-hash5474">darth-hash5474 on GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/gavin-griffith">Gavin Griffith on LinkedIn</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Plain HTML and CSS, checked with Playwright and axe on every push.
+      <a href="https://github.com/darth-hash5474/qa-portfolio/actions/workflows/portfolio-site.yml">See the latest run</a>
+    </p>
+  </footer>
+</body>
+</html>

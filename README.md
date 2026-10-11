@@ -6,6 +6,7 @@ Test automation projects: UI and API suites written in Python against real appli
 |---|---|---|
 | [navidrome/](navidrome/) | [Navidrome](https://github.com/navidrome/navidrome), an open-source music server | In progress |
 | [game-library/](game-library/) | A small game library manager (FastAPI, SQLite, HTML and JavaScript) built as a controlled system under test, with bugs planted for the tests to find | In progress |
+| [portfolio-site/](portfolio-site/) | The portfolio site itself: a static page listing the projects, skills and findings, tested with Playwright and axe | In progress |
 
 ## Navidrome
 
@@ -22,7 +23,7 @@ Stack: Python, [requests](https://requests.readthedocs.io/), [Playwright](https:
 | [test_login.py](navidrome/api-tests/test_login.py) | `POST /auth/login` returns 200 and a JWT; a wrong password gets a 401 and no token. |
 | [test_playlist.py](navidrome/api-tests/test_playlist.py) | Playlist lifecycle (create, read, rename, delete), 404s for a playlist that doesn't exist, rejection of malformed JSON and wrong-typed names, special characters stored intact, pagination and filtering by name. Boundary tests: a 50,000-character name must be refused or stored intact, and a playlist without a name must be refused. |
 | [test_subsonic.py](navidrome/api-tests/test_subsonic.py) | Subsonic API ping succeeds with valid credentials and reports error 40 for a wrong password. |
-| [test_tracks.py](navidrome/api-tests/test_tracks.py) | Adds tracks to a playlist through `POST /api/playlist/{id}/tracks`. A control adds real song IDs and expects them saved. Two more tests send IDs that don't exist, alone and mixed with real ones, and expect a rejection or an `added` count that matches what was saved. |
+| [test_tracks.py](navidrome/api-tests/test_tracks.py) | Adds tracks to a playlist through `POST /api/playlist/{id}/tracks`. A control adds real song IDs and expects them saved. Two more tests send IDs that don't exist, alone and mixed with real ones, and expect either a rejection or an `added` count that matches what was saved. |
 
 Shared setup lives in [conftest.py](navidrome/api-tests/conftest.py): one login per run, and a fixture that deletes any playlist a test creates.
 
@@ -40,13 +41,15 @@ Screens are wrapped in page objects in [pages.py](navidrome/ui-tests/pages.py). 
 
 ### Findings
 
-**Adding tracks to a playlist reports success for invalid track IDs.** Found with [test_tracks.py](navidrome/api-tests/test_tracks.py). Reported upstream as [navidrome/navidrome#6310](https://github.com/navidrome/navidrome/issues/6310).
+**Adding tracks to a playlist reports success for invalid track IDs.** Found with [test_tracks.py](navidrome/api-tests/test_tracks.py). Reported upstream as [navidrome/navidrome#6310](https://github.com/navidrome/navidrome/issues/6310) and confirmed by the maintainer.
 
 - **Version:** Navidrome 0.64.2
 - **Steps:** `POST /api/playlist/{id}/tracks` with an `ids` array containing non-existent or malformed track IDs, alone or mixed with real ones.
 - **Expected:** the request is rejected with 400 Bad Request or 422 Unprocessable Entity, or `added` reports the number of tracks actually saved.
-- **Actual:** the server returns 200 OK and `added` counts every ID sent. 3 real IDs plus 2 invalid ones gives `{"added":5}` with 3 tracks saved; 7 invalid IDs gives `{"added":7}` with 0 saved.
+- **Actual:** the server returns 200 OK and `added` counts every ID sent. 3 real IDs plus 2 invalid ones gives `{"added":5}` with 3 tracks in the playlist; 7 invalid IDs gives `{"added":7}` with none.
 - **Impact:** the response tells the client the tracks were added, so its state is out of sync with the saved playlist.
+- **Cause, from the maintainer:** users with access to all libraries bypassed the track ID check, so the unknown IDs were stored as orphan entries and counted.
+- **Status:** fixed in [PR #6313](https://github.com/navidrome/navidrome/pull/6313), not yet released. Verified against that PR's build: the same requests now return `{"added":3}` and `{"added":0}`. The two tests stay marked as expected failures until the test server moves to a release with the fix.
 
 **The API creates playlists with no name.** Found with [test_playlist.py](navidrome/api-tests/test_playlist.py).
 
@@ -178,3 +181,25 @@ npm run test:ui          # the UI; starts the app itself
 ```
 
 `POST /api/test/reset` puts the library back to its twelve starting games.
+
+## Portfolio site
+
+[![Portfolio site](https://github.com/darth-hash5474/qa-portfolio/actions/workflows/portfolio-site.yml/badge.svg)](https://github.com/darth-hash5474/qa-portfolio/actions/workflows/portfolio-site.yml)
+
+A single static page, plain HTML and CSS with no build step, in [portfolio-site/site/](portfolio-site/site/). Every claim on it links to the code that backs it, and the tests enforce that.
+
+| Test file | What it checks |
+|---|---|
+| [content.spec.ts](portfolio-site/tests/content.spec.ts) | The introduction, the header links, both projects with their findings, and that every opening claim and every skill carries a link to evidence. |
+| [links.spec.ts](portfolio-site/tests/links.spec.ts) | Every link has a destination and readable text, in-page links point at real sections, and every link into this repository points at a file or folder that exists. |
+| [accessibility.spec.ts](portfolio-site/tests/accessibility.spec.ts) | An axe scan against WCAG 2.1 AA on desktop and phone, heading order, the skip link, and reaching every link by keyboard. |
+| [layout.spec.ts](portfolio-site/tests/layout.spec.ts) | No sideways scrolling from 320px to 1920px wide, the column layout at each size, and reduced-motion behaviour. |
+
+[portfolio-site.yml](.github/workflows/portfolio-site.yml) runs these on every push that touches the site and, when they pass on `main`, publishes the site to GitHub Pages.
+
+```bash
+cd portfolio-site
+npm install && npx playwright install chromium
+npm start        # serves the site at http://localhost:4173
+npm test         # runs the tests; starts the server itself
+```
