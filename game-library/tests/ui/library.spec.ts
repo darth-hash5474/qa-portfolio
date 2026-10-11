@@ -15,11 +15,32 @@ test("the library lists the first page of games", async ({ page }) => {
 
 // Add a game to the library
 test("A new game appears in the list", async ({page}) => {
-  const title = "Sid Meier's Civilization VI"
+  const title = "Sid Meier's Civilization VI";
   await page.getByLabel("title").fill(title);
   await page.locator("#game-form").getByLabel("status").selectOption("playing");
   await page.getByRole("button", {name: "Add Game"}).click();
   await expect(page.locator("#toast")).toHaveText('Game added');
   await page.getByRole("searchbox", {name: "Search"}).fill(title);
   await expect(page.getByRole("cell", {name: title, exact: true})).toBeVisible();
+});
+
+// Click add game with an empty form
+test("Receive error 'Title is required', and list remains unchanged", async ({page}) => {
+  await page.getByRole("button", {name: "Add game"}).click();
+
+  // The message is shown in the paragraph under the Title input, not in the input itself
+  await expect(page.locator('[data-error-for="title"]')).toHaveText("Title is required.");
+
+  // Nothing was added: no success message and still twelve games
+  await expect(page.locator("#toast")).toBeEmpty();
+  await expect(page.getByTestId("stat-total")).toHaveText("12");
+});
+
+test("Input title consisting only of spaces", async ({page}) => {
+  const space_title = "     ";
+  await page.getByLabel("title").fill(space_title);
+  await page.getByRole("button", {name: "Add Game"}).click();
+
+  await expect(page.locator('[data-error-for="title"]')).toHaveText("Title is required.");
+  await expect(page.getByTestId("stat-total")).toHaveText("12");
 });
