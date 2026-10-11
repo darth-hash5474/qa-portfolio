@@ -101,6 +101,8 @@ To run against your own Navidrome server instead, point `URL`, `USERNAME` and `P
 
 ## Game Library
 
+[![Game Library tests](https://github.com/darth-hash5474/qa-portfolio/actions/workflows/game-library.yml/badge.svg)](https://github.com/darth-hash5474/qa-portfolio/actions/workflows/game-library.yml)
+
 A game library manager built to be tested: add, edit, delete, search, filter, sort and page through games, with a stats panel. Because the app is ours, it can be tested at every level. It has four bugs planted in it on purpose, two in the API and two in the UI, with nothing in the code marking where they are.
 
 Stack: Python, [FastAPI](https://fastapi.tiangolo.com/), SQLite, plain HTML and JavaScript. Unit and API tests use pytest; UI tests use [Playwright](https://playwright.dev/) in TypeScript.
@@ -126,7 +128,7 @@ This is the specification the app is tested against.
 
 ### Findings
 
-Planted bugs found so far: 2 of 4.
+Planted bugs found: 4 of 4.
 
 **A title of exactly 100 characters is rejected.** Found with [test_game_post.py](game-library/tests/api/test_game_post.py).
 
@@ -141,6 +143,24 @@ Planted bugs found so far: 2 of 4.
 - **Expected:** 409. The spec says duplicates are detected ignoring letter case.
 - **Actual:** 201 and a second copy of the game is created.
 - **Notes:** the same request with the title spelled "Hades" is correctly rejected with a 409, so only the case-insensitive part of the check is missing.
+
+**Adding a game after cancelling an edit overwrites the edited game.** Found with [editing.spec.ts](game-library/tests/ui/editing.spec.ts).
+
+- **Steps:** click Edit on a game, click Cancel, then fill in the form with a new title and click "Add game".
+- **Expected:** "Game added", the library grows by one and the game that was opened for editing is untouched. The spec says Cancel abandons the edit and returns the form to adding.
+- **Actual:** "Game updated". The game that was opened for editing is replaced by the new one and the total does not change.
+- **Notes:** the form looks reset after Cancel (heading, button and fields), so nothing on screen warns that the next save is still an edit.
+
+**The count under the list shows the games on the page, not the total.** Found with [paging.spec.ts](game-library/tests/ui/paging.spec.ts).
+
+- **Steps:** open the library with its twelve seeded games and read the count under the list.
+- **Expected:** "12 games" on every page. The spec says the count is the total number of matching games.
+- **Actual:** "10 games" on page 1 and "2 games" on page 2.
+- **Notes:** the stats panel correctly shows a total of 12, so the two numbers on the same screen disagree.
+
+### Continuous integration
+
+[game-library.yml](.github/workflows/game-library.yml) runs the unit, API and UI tests on every push and pull request that touches `game-library/`, and uploads the Playwright report as a build artifact. Tests for the planted bugs are marked as expected failures, so the build is green while the bugs are present.
 
 ### Running it
 
