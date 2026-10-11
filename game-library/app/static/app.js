@@ -203,7 +203,7 @@ el("cancel-button").addEventListener("click", resetForm);
 
 function askToDelete(game) {
   state.deletingId = game.id;
-  el("delete-message").innerHTML = `Delete <strong>${game.title}</strong> from your library?`;
+  el("delete-message").textContent = `Delete "${game.title}" from your library?`;
   el("delete-dialog").showModal();
 }
 

@@ -67,7 +67,6 @@ td.actions button { padding: 4px 10px; margin-right: 4px; }
 .pagination { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
 #result-count { margin-left: auto; color: var(--muted); }
 
-dialog strong { font-weight: 600; }
 dialog { border: 1px solid var(--border); border-radius: 8px; padding: 20px; max-width: 360px; }
 dialog::backdrop { background: rgba(0, 0, 0, 0.4); }
 

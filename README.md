@@ -101,7 +101,7 @@ To run against your own Navidrome server instead, point `URL`, `USERNAME` and `P
 
 ## Game Library
 
-A game library manager built to be tested: add, edit, delete, search, filter, sort and page through games, with a stats panel. Because the app is ours, it can be tested at every level. It has eight bugs planted in it on purpose, four in the API and four in the UI, with nothing in the code marking where they are.
+A game library manager built to be tested: add, edit, delete, search, filter, sort and page through games, with a stats panel. Because the app is ours, it can be tested at every level. It has four bugs planted in it on purpose, two in the API and two in the UI, with nothing in the code marking where they are.
 
 Stack: Python, [FastAPI](https://fastapi.tiangolo.com/), SQLite, plain HTML and JavaScript. Unit and API tests use pytest; UI tests use [Playwright](https://playwright.dev/) in TypeScript.
 
@@ -126,7 +126,7 @@ This is the specification the app is tested against.
 
 ### Findings
 
-Planted bugs found so far: 2 of 8.
+Planted bugs found so far: 2 of 4.
 
 **A title of exactly 100 characters is rejected.** Found with [test_game_post.py](game-library/tests/api/test_game_post.py).
 

@@ -80,7 +80,7 @@ class GameRepository:
             db.execute(
                 """
                 UPDATE games
-                SET title = :title, platform = :platform, status = :status, rating = :rating,
+                SET title = :title, platform = :platform, genre = :genre, status = :status, rating = :rating,
                     hours_played = :hours_played, release_year = :release_year, updated_at = :now
                 WHERE id = :id
                 """,

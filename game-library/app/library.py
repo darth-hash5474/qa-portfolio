@@ -1,4 +1,5 @@
 """Pure functions over a list of games: no database and no HTTP, so they can be unit tested directly."""
+import math
 from app.models import Game, GamePage, SortField, SortOrder, Stats, Status
 
 
@@ -42,7 +43,7 @@ def paginate(games: list[Game], page=1, page_size=10) -> GamePage:
         total=len(games),
         page=page,
         page_size=page_size,
-        total_pages=len(games) // page_size + 1,
+        total_pages=max(1, math.ceil(len(games) / page_size)),
     )
 
 
