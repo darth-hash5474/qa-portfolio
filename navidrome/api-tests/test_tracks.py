@@ -5,7 +5,9 @@ import requests
 INVALID_TRACK_IDS = [f"mock-track-id-{i}" for i in range(5)] + ["!!not-an-id!!", "12345"]
 
 # https://github.com/navidrome/navidrome/issues/6310
-KNOWN_BUG = 'Navidrome #6310: "added" counts the ids sent, not the tracks saved'
+# Confirmed by the maintainer and fixed in PR #6313. The tests below pass on that build,
+# so the xfail markers come off once the test server moves to a release that includes it.
+KNOWN_BUG = 'Navidrome #6310 (fixed in PR #6313, not yet released): "added" counts the ids sent, not the tracks saved'
 
 
 # Real track ids from the library
@@ -44,19 +46,23 @@ def test_valid_tracks_are_saved(api_url, auth_headers, create_playlist, valid_tr
     assert saved_count == len(valid_track_ids), f"Sent {len(valid_track_ids)} tracks, saved {saved_count}"
 
 
-# Invalid ids should be rejected, not accepted with a 200 and silently dropped
+# Invalid ids must not be reported as added: either the request is rejected, or "added" is 0
 @pytest.mark.xfail(strict=True, reason=KNOWN_BUG)
-def test_invalid_track_ids_are_rejected(api_url, auth_headers, create_playlist):
+def test_invalid_track_ids_are_not_counted(api_url, auth_headers, create_playlist):
     playlist_id = create_playlist("test_tracks - invalid ids").json().get("id")
 
     response = add_tracks(api_url, auth_headers, playlist_id, INVALID_TRACK_IDS)
     saved_count = get_saved_track_count(api_url, auth_headers, playlist_id)
 
     assert saved_count == 0, f"Server saved {saved_count} tracks that do not exist."
-    assert response.status_code in [400, 422], (
-        f"Server returned {response.status_code} ({response.text.strip()}) for invalid track ids "
-        f"and saved {saved_count} of {len(INVALID_TRACK_IDS)}. Expected 400 or 422."
-    )
+
+    # Rejecting the whole request is acceptable
+    if response.status_code in [400, 422]:
+        return
+
+    assert response.status_code == 200, f"Unexpected status for invalid ids: {response.status_code}"
+    added = response.json().get("added")
+    assert added == 0, f"Server reported {added} tracks added for {len(INVALID_TRACK_IDS)} invalid ids."
 
 
 # With a mix of real and invalid ids, the server must not report more tracks added than it saved
