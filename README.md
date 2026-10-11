@@ -49,7 +49,7 @@ Screens are wrapped in page objects in [pages.py](navidrome/ui-tests/pages.py). 
 - **Actual:** the server returns 200 OK and `added` counts every ID sent. 3 real IDs plus 2 invalid ones gives `{"added":5}` with 3 tracks in the playlist; 7 invalid IDs gives `{"added":7}` with none.
 - **Impact:** the response tells the client the tracks were added, so its state is out of sync with the saved playlist.
 - **Cause, from the maintainer:** users with access to all libraries bypassed the track ID check, so the unknown IDs were stored as orphan entries and counted.
-- **Status:** fixed in [PR #6313](https://github.com/navidrome/navidrome/pull/6313), not yet released. Verified against that PR's build: the same requests now return `{"added":3}` and `{"added":0}`. The two tests stay marked as expected failures until the test server moves to a release with the fix.
+- **Status:** fixed in [PR #6313](https://github.com/navidrome/navidrome/pull/6313), not yet released. Verified against that PR's build: the same requests now return `{"added":3}` and `{"added":0}`. Also verified the cleanup of data left by the bug: playlists created on 0.64.2 held orphan rows for the unknown IDs, and a full scan on the PR build removed them and renumbered the remaining tracks in their original order. The two tests stay marked as expected failures until the test server moves to a release with the fix.
 
 **The API creates playlists with no name.** Found with [test_playlist.py](navidrome/api-tests/test_playlist.py).
 
