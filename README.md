@@ -124,6 +124,17 @@ This is the specification the app is tested against.
 - **Stats:** average rating is taken over rated games only, to one decimal place. Completion rate is the share of completed games as a rounded whole percentage.
 - **In the UI:** the count under the list is the total number of matching games; Cancel abandons an edit and returns the form to adding; the stats panel updates after every change; anything a user typed is shown as text, never treated as HTML.
 
+### Findings
+
+Planted bugs found so far: 1 of 8.
+
+**A title of exactly 100 characters is rejected.** Found with [test_game_post.py](game-library/tests/api/test_game_post.py).
+
+- **Steps:** `POST /api/games` with a 100-character title and otherwise valid fields.
+- **Expected:** 201 and the game is created. The spec allows titles of 1 to 100 characters.
+- **Actual:** 422 with "Title must be 100 characters or fewer."
+- **Notes:** a 99-character title is accepted and a 101-character title is rejected, so the upper boundary is off by one.
+
 ### Running it
 
 ```bash

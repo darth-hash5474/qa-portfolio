@@ -1,3 +1,15 @@
+import pytest
+
+HOUR_LIMIT = 100000
+RELEASE_YEAR_MIN = 1970
+RELEASE_YEAR_MAX = 2100
+
+
+# The names of the fields a 422 response complains about
+def rejected_fields(response):
+    return sorted(error["loc"][-1] for error in response.json()["detail"])
+
+
 # Game creation test
 def test_create_game(client):
     # Only title and platform are required; the other fields have defaults
@@ -10,36 +22,69 @@ def test_create_game(client):
     response = client.post("/api/games", json=new_game)
 
     # Check the response from the server contains the correct title
-    assert response.status_code == 201
+    assert response.status_code == 201, response.json()
     assert response.json()["title"] == "Minecraft"
 
     # Fetch a fresh request using the game id of the game just created
-    game_id = 13
+    game_id = response.json()["id"]
     fetch_new_game = client.get(f"/api/games/{game_id}")
 
     # Should return 200
-    assert fetch_new_game.status_code == 200
-    assert fetch_new_game.json()["id"] == 13
+    assert fetch_new_game.status_code == 200, fetch_new_game.json()
+    assert fetch_new_game.json()["id"] == game_id
+    assert fetch_new_game.json()["title"] == "Minecraft"
 
-def test_post_bounds(client):
-    long_title = "X" * 10000
-    invalid_platform = "NES"
-    invalid_status = "not fun"
-    long_genre = "C" * 100 
 
-    new_game = {
-        "title": long_title,
-        "platform": invalid_platform,
-        "status": invalid_status,
-        "genre": long_genre,
-        "rating": -15,
-        "hours_played": 0.03,
-        "release_year": 1786
+# Title boundary: 100 characters is the longest title the spec allows
+@pytest.mark.xfail(strict=True, reason="Known bug: a title of exactly 100 characters is rejected")
+def test_title_100(client):
+    title_a = "A" * 100
+
+    game_a = {
+        "title": title_a,
+        "platform": "PC",
     }
 
-    response = client.post("/api/games", json=new_game)
-    assert response.status_code == 422
+    response_a = client.post("/api/games", json=game_a)
 
+    assert response_a.status_code == 201, response_a.json()
+    assert response_a.json()["title"] == title_a
+
+
+# Title boundary: one character under the limit
+def test_title_99(client):
+    title_b = "B" * 99
+
+    game_b = {
+        "title": title_b,
+        "platform": "PC",
+    }
+
+    response_b = client.post("/api/games", json=game_b)
+
+    assert response_b.status_code == 201, response_b.json()
+    assert response_b.json()["title"] == title_b
+
+
+# Title boundary: one character over the limit
+def test_title_101(client):
+    title_c = "C" * 101
+
+    game_c = {
+        "title": title_c,
+        "platform": "PC",
+    }
+
+    response_c = client.post("/api/games", json=game_c)
+
+    # Use the whole body as the message: a 201 response has no "detail" to show
+    assert response_c.status_code == 422, response_c.json()
+
+    # The request should be rejected because of the title and nothing else
+    assert rejected_fields(response_c) == ["title"]
+
+
+# A body with the wrong shape has no title or platform, so both are reported missing
 def test_arr_err(client):
     payload = {
         "games_1": [
@@ -53,12 +98,16 @@ def test_arr_err(client):
                 "title": "Sid Meiers Civ VI",
                 "platform": "PC",
             }
-        ], 
+        ],
     }
 
     response = client.post("/api/games", json=payload)
-    assert response.status_code == 422
 
+    assert response.status_code == 422, response.json()
+    assert rejected_fields(response) == ["platform", "title"]
+
+
+# Values of the wrong type are rejected, and both fields are named
 def test_value_err(client):
     invalid_title = True
     platform_error = 100
@@ -69,5 +118,6 @@ def test_value_err(client):
     }
 
     response = client.post("/api/games", json=new_game)
-    assert response.status_code == 422
 
+    assert response.status_code == 422, response.json()
+    assert rejected_fields(response) == ["platform", "title"]
