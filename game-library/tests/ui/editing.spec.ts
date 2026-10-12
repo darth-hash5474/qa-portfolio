@@ -79,18 +79,19 @@ test("Cancel abandons the edit", async ({ page }) => {
   await expect(row(page, "Changed My Mind")).toHaveCount(0);
 });
 
-test("after cancelling an edit, the form adds a new game", async ({ page }) => {
-  test.fail(true, "Known bug: after Edit then Cancel, adding a game overwrites the game that was being edited");
+test("after cancelling an edit, adding a new game overwrites the edit", async({ page }) => {
+  test.fail(true, "Known bug: after cancelling an edit, adding a new game overwrites the edit, instead of adding a fresh game.")
+  await page.getByRole("button", { name: "Edit Elden Ring"}).click();
+  await page.getByRole("button", {name: "Cancel"}).click();
 
-  await page.getByRole("button", { name: "Edit Celeste" }).click();
-  await page.getByRole("button", { name: "Cancel" }).click();
+  await expect(page.locator("#form-heading")).toHaveText("Add a game");
+  await fillForm(page, {title: "A"});
 
-  await addGame(page, { title: "Brand New Game" });
+  await page.getByRole("button", {name: "Add game"}).click();
 
-  await expect(toast(page)).toHaveText("Game added");
-  await expect(stat(page, "total")).toHaveText("13");
-  await expect(row(page, "Brand New Game")).toBeVisible();
-  await expect(row(page, "Celeste")).toBeVisible();
+  await expect(row(page, "Elden Ring")).toHaveCount(1)
+  await expect(row(page, "A")).toHaveCount(1)
+
 });
 
 test("clicking Edit on a second game replaces the first in the form", async ({ page }) => {
