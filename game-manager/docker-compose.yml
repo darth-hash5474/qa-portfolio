@@ -1,0 +1,42 @@
+# Runs the whole app: docker compose up --build
+# Client: http://localhost:3000   Server: http://localhost:5000
+services:
+  mongo:
+    # mongoose 5 uses a driver that predates newer MongoDB releases
+    image: mongo:4.4
+    volumes:
+      - mongo-data:/data/db
+      # Fills a new database with twelve games. To start over: docker compose down -v
+      - ./seed/seed.sh:/docker-entrypoint-initdb.d/seed.sh:ro
+      - ./seed/games.json:/seed/games.json:ro
+    healthcheck:
+      test: ["CMD", "mongo", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    environment:
+      DB_CONNECTION_URL: mongodb://mongo:27017/game-manager
+      # The demo sign-in the client shows under "Forgot your password?"
+      USERNAME: GamerGuy16
+      USER_PASSWORD: gameManager123
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  client:
+    build:
+      context: ./client
+      args:
+        REACT_APP_API_URL: http://localhost:5000
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+
+volumes:
+  mongo-data:
