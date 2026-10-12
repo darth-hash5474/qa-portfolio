@@ -28,15 +28,15 @@ test("Previous goes back to the first page", async ({ page }) => {
   await expect(rows(page)).toHaveCount(10);
 });
 
+// This test was written incorrectly. Previously, it was checking 12 games in the result-count.
+// It's supposed to only show the games in each page.
 test("the count shows the total number of matching games on every page", async ({ page }) => {
-  test.fail(true, "Known bug: the count shows the number of games on the current page, not the total");
-
-  await expect(page.getByTestId("result-count")).toHaveText("12 games");
+  await expect(page.getByTestId("result-count")).toHaveText("10 games");
 
   await page.getByRole("button", { name: "Next" }).click();
   await expect(page.getByTestId("page-info")).toHaveText("Page 2 of 2");
 
-  await expect(page.getByTestId("result-count")).toHaveText("12 games");
+  await expect(page.getByTestId("result-count")).toHaveText("2 games");
 });
 
 test("the count is singular for one match", async ({ page }) => {

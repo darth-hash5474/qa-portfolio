@@ -79,6 +79,7 @@ test("Cancel abandons the edit", async ({ page }) => {
   await expect(row(page, "Changed My Mind")).toHaveCount(0);
 });
 
+// Rewritten by me personally, no ai, just pure code.
 test("after cancelling an edit, adding a new game overwrites the edit", async({ page }) => {
   test.fail(true, "Known bug: after cancelling an edit, adding a new game overwrites the edit, instead of adding a fresh game.")
   await page.getByRole("button", { name: "Edit Elden Ring"}).click();
