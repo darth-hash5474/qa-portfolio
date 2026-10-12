@@ -1,10 +1,10 @@
 import { test, describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
-const url = ('http://localhost:3000')
+const url = process.env.CLIENT_URL
 
-test('Fetch the page', () => {
-    let response = fetch(url);
-    assert.equal(response.ok, response.ok);
+test('Fetch the page', async () => {
+    const response = await fetch(url);
+    assert(response.status, 200)
 })
 
