@@ -1,8 +1,10 @@
 import axios from "axios";
 
-// Production
+// Production, unless REACT_APP_API_URL points somewhere else at build time
 const API = axios.create({
-	baseURL: "https://mern-game-library-manager.herokuapp.com/",
+	baseURL:
+		process.env.REACT_APP_API_URL ||
+		"https://mern-game-library-manager.herokuapp.com/",
 });
 
 // Development
