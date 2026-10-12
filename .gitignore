@@ -8,3 +8,4 @@ reports/
 node_modules/
 playwright-report/
 game-library/data/
+.DS_Store
