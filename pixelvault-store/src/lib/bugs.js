@@ -1,55 +1,30 @@
-// "QA Lab" bug injection.
-// Bugs are switched on with ?bugs=BUG-01,BUG-05 in the URL (or from the QA Lab panel).
-// The URL param wins; otherwise the last saved selection from localStorage is used.
+/* global __PV_DEFAULT_BUGS__ */
+// Seeded-bug switches.
+// Which bugs are on is decided when the dev server (or build) starts, from npm flags:
+//   npm run dev --bugs=all | --bugs=<number> | --bugless      (see vite.config.js)
+// A ?bugs=... URL param overrides that for a single page load (handy in tests):
+//   ?bugs=all   ?bugs=5   ?bugs=BUG-03,BUG-07   ?bugs=   (empty = no bugs)
 
-export const BUGS = [
-  { id: 'BUG-01', area: 'Cart' },
-  { id: 'BUG-02', area: 'Cart' },
-  { id: 'BUG-03', area: 'Cart' },
-  { id: 'BUG-04', area: 'Header' },
-  { id: 'BUG-05', area: 'Store' },
-  { id: 'BUG-06', area: 'Search' },
-  { id: 'BUG-07', area: 'Checkout' },
-  { id: 'BUG-08', area: 'Checkout' },
-  { id: 'BUG-09', area: 'Checkout' },
-  { id: 'BUG-10', area: 'Age gate' },
-  { id: 'BUG-11', area: 'Layout' },
-  { id: 'BUG-12', area: 'Accessibility' },
-  { id: 'BUG-13', area: 'Wishlist' },
-  { id: 'BUG-14', area: 'Pagination' },
-]
+import { BUGS, BUG_IDS, resolveBugSpec } from './bug-ids'
+
+export { BUGS, BUG_IDS }
+
+// Injected by vite.config.js (`define`); empty if the app is loaded some other way.
+const FLAG_DEFAULT = typeof __PV_DEFAULT_BUGS__ !== 'undefined' ? __PV_DEFAULT_BUGS__ : []
 
 function read() {
   try {
     const p = new URLSearchParams(window.location.search).get('bugs')
-    if (p !== null) {
-      return p
-        .split(',')
-        .map((s) => s.trim().toUpperCase())
-        .filter(Boolean)
-    }
-    return JSON.parse(localStorage.getItem('pv_bugs') || '[]')
+    if (p !== null) return resolveBugSpec(p).ids
   } catch {
-    return []
+    /* no window / bad URL: fall back to the flag */
   }
+  return FLAG_DEFAULT
 }
 
 const active = new Set(read())
 
 export const hasBug = (id) => active.has(id)
-export const activeBugs = () => [...active]
-
-export function setBugs(list) {
-  try {
-    localStorage.setItem('pv_bugs', JSON.stringify(list))
-  } catch {
-    /* storage unavailable */
-  }
-  const url = new URL(window.location.href)
-  if (list.length) url.searchParams.set('bugs', list.join(','))
-  else url.searchParams.delete('bugs')
-  window.location.href = url.toString()
-}
 
 if (active.has('BUG-11')) document.documentElement.classList.add('bug-mobile-cart')
 

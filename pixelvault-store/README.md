@@ -10,6 +10,25 @@ npm run dev        # http://localhost:5173
 npm run build && npm run preview   # http://localhost:4173
 ```
 
+## Seeded bugs
+
+The app ships with 14 deliberate defects for practice. Pick how many are active with an npm flag
+when you start the server (no `--` separator needed):
+
+| Command | Bugs active |
+| --- | --- |
+| `npm run dev` or `npm run dev --bugless` | none |
+| `npm run dev --bugs=all` | all 14 |
+| `npm run dev --bugs=5` | the first 5 (BUG-01 to BUG-05), always the same ones |
+| `npm run dev --bugs=BUG-03,BUG-07` | exactly the listed bugs |
+
+The same flags work for `npm run build`; the choice is baked into the build that `npm run preview` serves.
+Restart the server to change the flag. The terminal prints which bugs are on when it starts.
+A bad value (`--bugs=abc`, or `--bugless` together with `--bugs`) stops with an error message.
+
+A `?bugs=` URL param overrides the flag for a single page load, which is handy inside a test:
+`?bugs=all`, `?bugs=5`, `?bugs=BUG-03,BUG-07`, or `?bugs=` for none.
+
 ## What's in it
 
 | Area | UI worth testing |
@@ -38,7 +57,7 @@ npm run build && npm run preview   # http://localhost:4173
 | --- | --- |
 | `?delay=1500` | Slower games request (default 500 ms) so loading states are easy to see |
 | `?fail=1` | Games request fails, which shows the error state |
-| `?bugs=BUG-01,BUG-05` | Turns on seeded bugs (see `BUGS.md`). Also available from the 🐞 QA Lab panel |
+| `?bugs=BUG-01,BUG-05` | Overrides the `--bugs` flag for this page load (see "Seeded bugs" above) |
 
 Put them before the hash: `http://localhost:5173/?delay=1500&bugs=BUG-03#/cart`.
 Store filters live inside the hash: `/#/?genre=RPG,Horror&max=30&sale=1&sort=price-asc&page=2`.
@@ -58,7 +77,7 @@ Use a fresh browser context per test, or clear storage, to start clean.
 
 ```
 public/api/games.json   mock catalog (27 games)
-src/lib/                bugs.js (bug switches), pricing.js (totals/promos/tax), store.jsx (state)
-src/components/         Header, SearchBox, Carousel, GameCard, AgeGate, QALab, …
+src/lib/                bug-ids.js + bugs.js (bug switches), pricing.js (totals/promos/tax), store.jsx (state)
+src/components/         Header, SearchBox, Carousel, GameCard, AgeGate, …
 src/pages/              Store, Game, Cart, Checkout, Order, Library, Wishlist
 ```
