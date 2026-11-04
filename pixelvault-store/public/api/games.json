@@ -1,0 +1,2043 @@
+{
+ "games": [
+  {
+   "id": "neon-drifters",
+   "title": "Neon Drifters",
+   "developer": "Apex Pixel Works",
+   "genres": [
+    "Racing"
+   ],
+   "tags": [
+    "Arcade",
+    "Synthwave",
+    "Multiplayer"
+   ],
+   "price": 29.99,
+   "discount": 25,
+   "releaseDate": "2025-03-14",
+   "esrb": "T",
+   "reviewScore": 88,
+   "reviewCount": 12840,
+   "reviewLabel": "Very Positive",
+   "emoji": "🏎️",
+   "hue": 300,
+   "featured": true,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS",
+    "Linux"
+   ],
+   "tagline": "Race through rain-slicked neon cities at impossible speeds.",
+   "description": [
+    "Race through rain-slicked neon cities at impossible speeds.",
+    "Tight handling, punchy boosts, and a track list that keeps surprising you.",
+    "Developed by Apex Pixel Works. Tags: Arcade, Synthwave, Multiplayer."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i5-7500",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 960",
+     "storage": "15 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i7-9700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce GTX 1660",
+     "storage": "15 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "Mara_K",
+     "hours": 4,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "NightOwlNora",
+     "hours": 95,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "SlowBurnSam",
+     "hours": 186,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "Priya_P",
+     "hours": 277,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    }
+   ]
+  },
+  {
+   "id": "hollow-lantern",
+   "title": "Hollow Lantern",
+   "developer": "Duskbell Studio",
+   "genres": [
+    "Horror"
+   ],
+   "tags": [
+    "Atmospheric",
+    "Survival",
+    "Singleplayer"
+   ],
+   "price": 19.99,
+   "discount": 0,
+   "releaseDate": "2024-10-31",
+   "esrb": "M",
+   "reviewScore": 91,
+   "reviewCount": 8420,
+   "reviewLabel": "Very Positive",
+   "emoji": "🕯️",
+   "hue": 265,
+   "featured": true,
+   "comingSoon": false,
+   "platforms": [
+    "Windows"
+   ],
+   "tagline": "Carry the last light through a village that remembers you.",
+   "description": [
+    "Carry the last light through a village that remembers you.",
+    "Sound design does the heavy lifting here; headphones strongly recommended.",
+    "Developed by Duskbell Studio. Tags: Atmospheric, Survival, Singleplayer."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "JumpKing88",
+     "hours": 41,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 132,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "GlitchWitch",
+     "hours": 223,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "Mara_K",
+     "hours": 314,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    }
+   ]
+  },
+  {
+   "id": "starforge-tactics",
+   "title": "Starforge Tactics",
+   "developer": "Orbital Fox Games",
+   "genres": [
+    "Strategy"
+   ],
+   "tags": [
+    "Turn-Based",
+    "Sci-Fi",
+    "Co-op"
+   ],
+   "price": 39.99,
+   "discount": 40,
+   "releaseDate": "2025-08-02",
+   "esrb": "T",
+   "reviewScore": 84,
+   "reviewCount": 5310,
+   "reviewLabel": "Very Positive",
+   "emoji": "🚀",
+   "hue": 215,
+   "featured": true,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS"
+   ],
+   "tagline": "Command fleets, forge alliances, and outplay the void.",
+   "description": [
+    "Command fleets, forge alliances, and outplay the void.",
+    "Every decision ripples. Expect long nights and a few legendary comebacks.",
+    "Developed by Orbital Fox Games. Tags: Turn-Based, Sci-Fi, Co-op."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8600K",
+     "ram": "12 GB RAM",
+     "gpu": "GeForce GTX 1060 6GB",
+     "storage": "60 GB"
+    },
+    "recommended": {
+     "os": "Windows 11 64-bit",
+     "cpu": "Intel Core i7-12700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce RTX 3060",
+     "storage": "60 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 78,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "Ravi",
+     "hours": 169,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "tankenjoyer",
+     "hours": 260,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "JumpKing88",
+     "hours": 351,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    }
+   ]
+  },
+  {
+   "id": "moss-and-mortar",
+   "title": "Moss & Mortar",
+   "developer": "Little Kiln",
+   "genres": [
+    "Puzzle",
+    "Indie"
+   ],
+   "tags": [
+    "Relaxing",
+    "Cozy",
+    "Singleplayer"
+   ],
+   "price": 12.99,
+   "discount": 0,
+   "releaseDate": "2023-05-19",
+   "esrb": "E",
+   "reviewScore": 97,
+   "reviewCount": 21900,
+   "reviewLabel": "Overwhelmingly Positive",
+   "emoji": "🌿",
+   "hue": 140,
+   "featured": true,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "Linux"
+   ],
+   "tagline": "Rebuild a crumbling garden one clever stone at a time.",
+   "description": [
+    "Rebuild a crumbling garden one clever stone at a time.",
+    "Easy to pick up, quietly brilliant once the later stages start to bend your brain. A small team's big idea, polished until it shines.",
+    "Developed by Little Kiln. Tags: Relaxing, Cozy, Singleplayer."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "NightOwlNora",
+     "hours": 115,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "SlowBurnSam",
+     "hours": 206,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "Priya_P",
+     "hours": 297,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 8,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    }
+   ]
+  },
+  {
+   "id": "crimson-citadel",
+   "title": "Crimson Citadel",
+   "developer": "Ironquill Interactive",
+   "genres": [
+    "RPG"
+   ],
+   "tags": [
+    "Open World",
+    "Dark Fantasy",
+    "Story Rich"
+   ],
+   "price": 59.99,
+   "discount": 0,
+   "releaseDate": "2026-02-06",
+   "esrb": "M",
+   "reviewScore": 79,
+   "reviewCount": 30210,
+   "reviewLabel": "Mostly Positive",
+   "emoji": "🏰",
+   "hue": 350,
+   "featured": true,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS"
+   ],
+   "tagline": "A kingdom bleeds. Choose who inherits the crown.",
+   "description": [
+    "A kingdom bleeds. Choose who inherits the crown.",
+    "Deep builds, memorable companions, and choices that actually change the ending.",
+    "Developed by Ironquill Interactive. Tags: Open World, Dark Fantasy, Story Rich."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8600K",
+     "ram": "12 GB RAM",
+     "gpu": "GeForce GTX 1060 6GB",
+     "storage": "60 GB"
+    },
+    "recommended": {
+     "os": "Windows 11 64-bit",
+     "cpu": "Intel Core i7-12700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce RTX 3060",
+     "storage": "60 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 152,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "GlitchWitch",
+     "hours": 243,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "Mara_K",
+     "hours": 334,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "NightOwlNora",
+     "hours": 45,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    }
+   ]
+  },
+  {
+   "id": "pocket-planet",
+   "title": "Pocket Planet",
+   "developer": "Tinker Moon",
+   "genres": [
+    "Sim",
+    "Indie"
+   ],
+   "tags": [
+    "Building",
+    "Relaxing",
+    "Space"
+   ],
+   "price": 14.99,
+   "discount": 20,
+   "releaseDate": "2024-01-22",
+   "esrb": "E",
+   "reviewScore": 93,
+   "reviewCount": 9870,
+   "reviewLabel": "Very Positive",
+   "emoji": "🪐",
+   "hue": 190,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows"
+   ],
+   "tagline": "Terraform a tiny world and watch life take hold.",
+   "description": [
+    "Terraform a tiny world and watch life take hold.",
+    "Systems upon systems, all of them satisfying to tinker with. A small team's big idea, polished until it shines.",
+    "Developed by Tinker Moon. Tags: Building, Relaxing, Space."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "Ravi",
+     "hours": 189,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "tankenjoyer",
+     "hours": 280,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "JumpKing88",
+     "hours": 371,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 82,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    }
+   ]
+  },
+  {
+   "id": "gridlock-gunners",
+   "title": "Gridlock Gunners",
+   "developer": "Blackout Syndicate",
+   "genres": [
+    "Shooter"
+   ],
+   "tags": [
+    "FPS",
+    "Multiplayer",
+    "Competitive"
+   ],
+   "price": 34.99,
+   "discount": 50,
+   "releaseDate": "2025-11-11",
+   "esrb": "M",
+   "reviewScore": 72,
+   "reviewCount": 15600,
+   "reviewLabel": "Mostly Positive",
+   "emoji": "🔫",
+   "hue": 12,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS",
+    "Linux"
+   ],
+   "tagline": "Fast, loud, and ruthlessly competitive 5v5 arena combat.",
+   "description": [
+    "Fast, loud, and ruthlessly competitive 5v5 arena combat.",
+    "Responsive gunplay and a steady drip of unlocks keep every session fresh.",
+    "Developed by Blackout Syndicate. Tags: FPS, Multiplayer, Competitive."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8600K",
+     "ram": "12 GB RAM",
+     "gpu": "GeForce GTX 1060 6GB",
+     "storage": "60 GB"
+    },
+    "recommended": {
+     "os": "Windows 11 64-bit",
+     "cpu": "Intel Core i7-12700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce RTX 3060",
+     "storage": "60 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "SlowBurnSam",
+     "hours": 226,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "Priya_P",
+     "hours": 317,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 28,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "Ravi",
+     "hours": 119,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    }
+   ]
+  },
+  {
+   "id": "tidecallers",
+   "title": "Tidecallers",
+   "developer": "Saltglass Collective",
+   "genres": [
+    "RPG",
+    "Adventure"
+   ],
+   "tags": [
+    "Exploration",
+    "Story Rich",
+    "Co-op"
+   ],
+   "price": 44.99,
+   "discount": 15,
+   "releaseDate": "2025-06-27",
+   "esrb": "T",
+   "reviewScore": 89,
+   "reviewCount": 7340,
+   "reviewLabel": "Very Positive",
+   "emoji": "🌊",
+   "hue": 200,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows"
+   ],
+   "tagline": "Sail an endless sea and bargain with the tides themselves.",
+   "description": [
+    "Sail an endless sea and bargain with the tides themselves.",
+    "Deep builds, memorable companions, and choices that actually change the ending. A world worth getting lost in, with secrets tucked behind every landmark.",
+    "Developed by Saltglass Collective. Tags: Exploration, Story Rich, Co-op."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i5-7500",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 960",
+     "storage": "15 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i7-9700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce GTX 1660",
+     "storage": "15 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "GlitchWitch",
+     "hours": 263,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "Mara_K",
+     "hours": 354,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "NightOwlNora",
+     "hours": 65,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "SlowBurnSam",
+     "hours": 156,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    }
+   ]
+  },
+  {
+   "id": "bit-bandit",
+   "title": "Bit Bandit",
+   "developer": "Pixel Pockets",
+   "genres": [
+    "Platformer",
+    "Indie"
+   ],
+   "tags": [
+    "Retro",
+    "Pixel Art",
+    "Difficult"
+   ],
+   "price": 9.99,
+   "discount": 0,
+   "releaseDate": "2023-09-08",
+   "esrb": "E",
+   "reviewScore": 94,
+   "reviewCount": 11250,
+   "reviewLabel": "Very Positive",
+   "emoji": "🕹️",
+   "hue": 50,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS"
+   ],
+   "tagline": "Steal every coin in 64 tiny, tricky vaults.",
+   "description": [
+    "Steal every coin in 64 tiny, tricky vaults.",
+    "Pixel-precise controls and level design that respects your time. A small team's big idea, polished until it shines.",
+    "Developed by Pixel Pockets. Tags: Retro, Pixel Art, Difficult."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "tankenjoyer",
+     "hours": 300,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "JumpKing88",
+     "hours": 11,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 102,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "GlitchWitch",
+     "hours": 193,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    }
+   ]
+  },
+  {
+   "id": "ironclad-legion",
+   "title": "Ironclad Legion",
+   "developer": "Forgeheart Games",
+   "genres": [
+    "Strategy"
+   ],
+   "tags": [
+    "RTS",
+    "Historical",
+    "Multiplayer"
+   ],
+   "price": 49.99,
+   "discount": 30,
+   "releaseDate": "2024-04-12",
+   "esrb": "T",
+   "reviewScore": 66,
+   "reviewCount": 4890,
+   "reviewLabel": "Mixed",
+   "emoji": "⚔️",
+   "hue": 25,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "Linux"
+   ],
+   "tagline": "Raise an army of steel and march on the last free city.",
+   "description": [
+    "Raise an army of steel and march on the last free city.",
+    "Every decision ripples. Expect long nights and a few legendary comebacks.",
+    "Developed by Forgeheart Games. Tags: RTS, Historical, Multiplayer."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8600K",
+     "ram": "12 GB RAM",
+     "gpu": "GeForce GTX 1060 6GB",
+     "storage": "60 GB"
+    },
+    "recommended": {
+     "os": "Windows 11 64-bit",
+     "cpu": "Intel Core i7-12700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce RTX 3060",
+     "storage": "60 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "Priya_P",
+     "hours": 337,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 48,
+     "recommended": false,
+     "text": "Too grindy for my taste. Refunded after two hours."
+    },
+    {
+     "user": "Ravi",
+     "hours": 139,
+     "recommended": false,
+     "text": "Great trailer, mediocre game. Wait for a bigger sale."
+    },
+    {
+     "user": "tankenjoyer",
+     "hours": 230,
+     "recommended": false,
+     "text": "Cool idea but it runs out of steam about halfway through."
+    }
+   ]
+  },
+  {
+   "id": "midnight-diner-manager",
+   "title": "Midnight Diner Manager",
+   "developer": "Neon Noodle",
+   "genres": [
+    "Sim"
+   ],
+   "tags": [
+    "Management",
+    "Cozy",
+    "Singleplayer"
+   ],
+   "price": 17.99,
+   "discount": 0,
+   "releaseDate": "2024-07-04",
+   "esrb": "E",
+   "reviewScore": 96,
+   "reviewCount": 6720,
+   "reviewLabel": "Overwhelmingly Positive",
+   "emoji": "🍜",
+   "hue": 20,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS"
+   ],
+   "tagline": "Run an all-night ramen counter for the city's strangest regulars.",
+   "description": [
+    "Run an all-night ramen counter for the city's strangest regulars.",
+    "Systems upon systems, all of them satisfying to tinker with.",
+    "Developed by Neon Noodle. Tags: Management, Cozy, Singleplayer."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "Mara_K",
+     "hours": 374,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "NightOwlNora",
+     "hours": 85,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "SlowBurnSam",
+     "hours": 176,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "Priya_P",
+     "hours": 267,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    }
+   ]
+  },
+  {
+   "id": "echoes-of-ashfall",
+   "title": "Echoes of Ashfall",
+   "developer": "Cinder & Co",
+   "genres": [
+    "Action",
+    "Adventure"
+   ],
+   "tags": [
+    "Story Rich",
+    "Post-Apocalyptic",
+    "Singleplayer"
+   ],
+   "price": 54.99,
+   "discount": 10,
+   "releaseDate": "2025-09-19",
+   "esrb": "M",
+   "reviewScore": 85,
+   "reviewCount": 18430,
+   "reviewLabel": "Very Positive",
+   "emoji": "🔥",
+   "hue": 15,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows"
+   ],
+   "tagline": "Cross a burned continent to find the voice on the radio.",
+   "description": [
+    "Cross a burned continent to find the voice on the radio.",
+    "Combat has weight, and the encounter design rewards learning enemy patterns. A world worth getting lost in, with secrets tucked behind every landmark.",
+    "Developed by Cinder & Co. Tags: Story Rich, Post-Apocalyptic, Singleplayer."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8600K",
+     "ram": "12 GB RAM",
+     "gpu": "GeForce GTX 1060 6GB",
+     "storage": "60 GB"
+    },
+    "recommended": {
+     "os": "Windows 11 64-bit",
+     "cpu": "Intel Core i7-12700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce RTX 3060",
+     "storage": "60 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "JumpKing88",
+     "hours": 31,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 122,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "GlitchWitch",
+     "hours": 213,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "Mara_K",
+     "hours": 304,
+     "recommended": false,
+     "text": "Too grindy for my taste. Refunded after two hours."
+    }
+   ]
+  },
+  {
+   "id": "cloud-cartographers",
+   "title": "Cloud Cartographers",
+   "developer": "Windmill Lane",
+   "genres": [
+    "Adventure",
+    "Indie"
+   ],
+   "tags": [
+    "Exploration",
+    "Relaxing",
+    "Hand-Drawn"
+   ],
+   "price": 24.99,
+   "discount": 0,
+   "releaseDate": "2023-11-30",
+   "esrb": "E",
+   "reviewScore": 98,
+   "reviewCount": 14020,
+   "reviewLabel": "Overwhelmingly Positive",
+   "emoji": "☁️",
+   "hue": 205,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS",
+    "Linux"
+   ],
+   "tagline": "Map the floating islands before the storm season arrives.",
+   "description": [
+    "Map the floating islands before the storm season arrives.",
+    "A world worth getting lost in, with secrets tucked behind every landmark. A small team's big idea, polished until it shines.",
+    "Developed by Windmill Lane. Tags: Exploration, Relaxing, Hand-Drawn."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 68,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "Ravi",
+     "hours": 159,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "tankenjoyer",
+     "hours": 250,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "JumpKing88",
+     "hours": 341,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    }
+   ]
+  },
+  {
+   "id": "voidrunner",
+   "title": "Voidrunner",
+   "developer": "Hexagon Hounds",
+   "genres": [
+    "Shooter"
+   ],
+   "tags": [
+    "Roguelike",
+    "Bullet Hell",
+    "Singleplayer"
+   ],
+   "price": 22.99,
+   "discount": 35,
+   "releaseDate": "2024-12-05",
+   "esrb": "T",
+   "reviewScore": 90,
+   "reviewCount": 9210,
+   "reviewLabel": "Very Positive",
+   "emoji": "🛸",
+   "hue": 275,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows"
+   ],
+   "tagline": "Die, learn, and fly again through a collapsing star system.",
+   "description": [
+    "Die, learn, and fly again through a collapsing star system.",
+    "Responsive gunplay and a steady drip of unlocks keep every session fresh.",
+    "Developed by Hexagon Hounds. Tags: Roguelike, Bullet Hell, Singleplayer."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "NightOwlNora",
+     "hours": 105,
+     "recommended": false,
+     "text": "Performance dips on mid-range hardware. Needs a patch."
+    },
+    {
+     "user": "SlowBurnSam",
+     "hours": 196,
+     "recommended": false,
+     "text": "Too grindy for my taste. Refunded after two hours."
+    },
+    {
+     "user": "Priya_P",
+     "hours": 287,
+     "recommended": false,
+     "text": "Great trailer, mediocre game. Wait for a bigger sale."
+    },
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 378,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    }
+   ]
+  },
+  {
+   "id": "kitsune-kart",
+   "title": "Kitsune Kart",
+   "developer": "Lantern Leaf",
+   "genres": [
+    "Racing"
+   ],
+   "tags": [
+    "Party",
+    "Local Co-op",
+    "Family Friendly"
+   ],
+   "price": 27.99,
+   "discount": 0,
+   "releaseDate": "2024-03-29",
+   "esrb": "E",
+   "reviewScore": 87,
+   "reviewCount": 8030,
+   "reviewLabel": "Very Positive",
+   "emoji": "🦊",
+   "hue": 30,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS"
+   ],
+   "tagline": "Drift through shrine-lined tracks with up to eight friends.",
+   "description": [
+    "Drift through shrine-lined tracks with up to eight friends.",
+    "Tight handling, punchy boosts, and a track list that keeps surprising you.",
+    "Developed by Lantern Leaf. Tags: Party, Local Co-op, Family Friendly."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 142,
+     "recommended": false,
+     "text": "Too grindy for my taste. Refunded after two hours."
+    },
+    {
+     "user": "GlitchWitch",
+     "hours": 233,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "Mara_K",
+     "hours": 324,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "NightOwlNora",
+     "hours": 35,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    }
+   ]
+  },
+  {
+   "id": "the-last-lighthouse",
+   "title": "The Last Lighthouse",
+   "developer": "Duskbell Studio",
+   "genres": [
+    "Horror",
+    "Adventure"
+   ],
+   "tags": [
+    "Psychological",
+    "Atmospheric",
+    "Short"
+   ],
+   "price": 15.99,
+   "discount": 60,
+   "releaseDate": "2022-10-14",
+   "esrb": "M",
+   "reviewScore": 58,
+   "reviewCount": 3120,
+   "reviewLabel": "Mixed",
+   "emoji": "🗼",
+   "hue": 195,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "Linux"
+   ],
+   "tagline": "Keep the lamp burning. Do not look at the water.",
+   "description": [
+    "Keep the lamp burning. Do not look at the water.",
+    "Sound design does the heavy lifting here; headphones strongly recommended. A world worth getting lost in, with secrets tucked behind every landmark.",
+    "Developed by Duskbell Studio. Tags: Psychological, Atmospheric, Short."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "Ravi",
+     "hours": 179,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "tankenjoyer",
+     "hours": 270,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "JumpKing88",
+     "hours": 361,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 72,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    }
+   ]
+  },
+  {
+   "id": "brickbreaker-odyssey",
+   "title": "Brickbreaker Odyssey",
+   "developer": "Open Hatch",
+   "genres": [
+    "Puzzle"
+   ],
+   "tags": [
+    "Free to Play",
+    "Arcade",
+    "Casual"
+   ],
+   "price": 0,
+   "discount": 0,
+   "releaseDate": "2023-02-10",
+   "esrb": "E",
+   "reviewScore": 81,
+   "reviewCount": 40210,
+   "reviewLabel": "Very Positive",
+   "emoji": "🧱",
+   "hue": 10,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS"
+   ],
+   "tagline": "A classic reborn with power-ups, bosses, and a thousand levels.",
+   "description": [
+    "A classic reborn with power-ups, bosses, and a thousand levels.",
+    "Easy to pick up, quietly brilliant once the later stages start to bend your brain.",
+    "Developed by Open Hatch. Tags: Free to Play, Arcade, Casual."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "SlowBurnSam",
+     "hours": 216,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "Priya_P",
+     "hours": 307,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 18,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "Ravi",
+     "hours": 109,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    }
+   ]
+  },
+  {
+   "id": "dragonwake-online",
+   "title": "Dragonwake Online",
+   "developer": "Emberpath Network",
+   "genres": [
+    "RPG"
+   ],
+   "tags": [
+    "Free to Play",
+    "MMO",
+    "Multiplayer"
+   ],
+   "price": 0,
+   "discount": 0,
+   "releaseDate": "2022-08-21",
+   "esrb": "T",
+   "reviewScore": 62,
+   "reviewCount": 88100,
+   "reviewLabel": "Mixed",
+   "emoji": "🐉",
+   "hue": 340,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows"
+   ],
+   "tagline": "Join millions in a living world where dragons reshape the map.",
+   "description": [
+    "Join millions in a living world where dragons reshape the map.",
+    "Deep builds, memorable companions, and choices that actually change the ending.",
+    "Developed by Emberpath Network. Tags: Free to Play, MMO, Multiplayer."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i5-7500",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 960",
+     "storage": "15 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i7-9700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce GTX 1660",
+     "storage": "15 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "GlitchWitch",
+     "hours": 253,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "Mara_K",
+     "hours": 344,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "NightOwlNora",
+     "hours": 55,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "SlowBurnSam",
+     "hours": 146,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    }
+   ]
+  },
+  {
+   "id": "quantum-chef",
+   "title": "Quantum Chef",
+   "developer": "Superposition Kitchen",
+   "genres": [
+    "Puzzle",
+    "Sim"
+   ],
+   "tags": [
+    "Cooking",
+    "Physics",
+    "Co-op"
+   ],
+   "price": 19.99,
+   "discount": 0,
+   "releaseDate": "2025-01-17",
+   "esrb": "E",
+   "reviewScore": 92,
+   "reviewCount": 5560,
+   "reviewLabel": "Very Positive",
+   "emoji": "🧪",
+   "hue": 160,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS",
+    "Linux"
+   ],
+   "tagline": "Cook in four dimensions. The soufflé is both done and not done.",
+   "description": [
+    "Cook in four dimensions. The soufflé is both done and not done.",
+    "Easy to pick up, quietly brilliant once the later stages start to bend your brain. Systems upon systems, all of them satisfying to tinker with.",
+    "Developed by Superposition Kitchen. Tags: Cooking, Physics, Co-op."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "tankenjoyer",
+     "hours": 290,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "JumpKing88",
+     "hours": 381,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 92,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "GlitchWitch",
+     "hours": 183,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    }
+   ]
+  },
+  {
+   "id": "skyline-tycoon",
+   "title": "Skyline Tycoon",
+   "developer": "Concrete Cloud",
+   "genres": [
+    "Sim",
+    "Strategy"
+   ],
+   "tags": [
+    "City Builder",
+    "Management",
+    "Economy"
+   ],
+   "price": 29.99,
+   "discount": 45,
+   "releaseDate": "2024-05-30",
+   "esrb": "E",
+   "reviewScore": 77,
+   "reviewCount": 12700,
+   "reviewLabel": "Mostly Positive",
+   "emoji": "🏙️",
+   "hue": 220,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows"
+   ],
+   "tagline": "Zone it, wire it, tax it. Build a skyline worth the postcards.",
+   "description": [
+    "Zone it, wire it, tax it. Build a skyline worth the postcards.",
+    "Systems upon systems, all of them satisfying to tinker with. Every decision ripples. Expect long nights and a few legendary comebacks.",
+    "Developed by Concrete Cloud. Tags: City Builder, Management, Economy."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i5-7500",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 960",
+     "storage": "15 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i7-9700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce GTX 1660",
+     "storage": "15 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "Priya_P",
+     "hours": 327,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 38,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "Ravi",
+     "hours": 129,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "tankenjoyer",
+     "hours": 220,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    }
+   ]
+  },
+  {
+   "id": "thornwood-hunters",
+   "title": "Thornwood Hunters",
+   "developer": "Ashen Antler",
+   "genres": [
+    "Action",
+    "RPG"
+   ],
+   "tags": [
+    "Co-op",
+    "Monster Hunting",
+    "Crafting"
+   ],
+   "price": 39.99,
+   "discount": 0,
+   "releaseDate": "2025-04-25",
+   "esrb": "T",
+   "reviewScore": 83,
+   "reviewCount": 10440,
+   "reviewLabel": "Very Positive",
+   "emoji": "🏹",
+   "hue": 110,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS"
+   ],
+   "tagline": "Track colossal beasts through a forest that fights back.",
+   "description": [
+    "Track colossal beasts through a forest that fights back.",
+    "Combat has weight, and the encounter design rewards learning enemy patterns. Deep builds, memorable companions, and choices that actually change the ending.",
+    "Developed by Ashen Antler. Tags: Co-op, Monster Hunting, Crafting."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i5-7500",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 960",
+     "storage": "15 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i7-9700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce GTX 1660",
+     "storage": "15 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "Mara_K",
+     "hours": 364,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "NightOwlNora",
+     "hours": 75,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "SlowBurnSam",
+     "hours": 166,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "Priya_P",
+     "hours": 257,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    }
+   ]
+  },
+  {
+   "id": "rustbucket-rally",
+   "title": "Rustbucket Rally",
+   "developer": "Gravel & Grit",
+   "genres": [
+    "Racing",
+    "Action"
+   ],
+   "tags": [
+    "Vehicular Combat",
+    "Local Co-op",
+    "Arcade"
+   ],
+   "price": 19.99,
+   "discount": 25,
+   "releaseDate": "2023-07-15",
+   "esrb": "T",
+   "reviewScore": 75,
+   "reviewCount": 6150,
+   "reviewLabel": "Mostly Positive",
+   "emoji": "🚙",
+   "hue": 35,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "Linux"
+   ],
+   "tagline": "Wreck, rebuild, repeat. Crown the junkyard champion.",
+   "description": [
+    "Wreck, rebuild, repeat. Crown the junkyard champion.",
+    "Tight handling, punchy boosts, and a track list that keeps surprising you. Combat has weight, and the encounter design rewards learning enemy patterns.",
+    "Developed by Gravel & Grit. Tags: Vehicular Combat, Local Co-op, Arcade."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "JumpKing88",
+     "hours": 21,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 112,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "GlitchWitch",
+     "hours": 203,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "Mara_K",
+     "hours": 294,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    }
+   ]
+  },
+  {
+   "id": "paper-knights",
+   "title": "Paper Knights",
+   "developer": "Fold & Flourish",
+   "genres": [
+    "Platformer",
+    "Action"
+   ],
+   "tags": [
+    "Hand-Drawn",
+    "Co-op",
+    "Family Friendly"
+   ],
+   "price": 16.99,
+   "discount": 0,
+   "releaseDate": "2024-09-13",
+   "esrb": "E",
+   "reviewScore": 95,
+   "reviewCount": 7780,
+   "reviewLabel": "Overwhelmingly Positive",
+   "emoji": "📜",
+   "hue": 45,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS"
+   ],
+   "tagline": "A swashbuckling adventure folded from a single sheet of paper.",
+   "description": [
+    "A swashbuckling adventure folded from a single sheet of paper.",
+    "Pixel-precise controls and level design that respects your time. Combat has weight, and the encounter design rewards learning enemy patterns.",
+    "Developed by Fold & Flourish. Tags: Hand-Drawn, Co-op, Family Friendly."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 58,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "Ravi",
+     "hours": 149,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "tankenjoyer",
+     "hours": 240,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "JumpKing88",
+     "hours": 331,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    }
+   ]
+  },
+  {
+   "id": "abyssal-depths",
+   "title": "Abyssal Depths",
+   "developer": "Pressure Point",
+   "genres": [
+    "Horror",
+    "Shooter"
+   ],
+   "tags": [
+    "Underwater",
+    "Survival",
+    "Sci-Fi"
+   ],
+   "price": 32.99,
+   "discount": 20,
+   "releaseDate": "2025-10-03",
+   "esrb": "M",
+   "reviewScore": 69,
+   "reviewCount": 9430,
+   "reviewLabel": "Mixed",
+   "emoji": "🐙",
+   "hue": 180,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows"
+   ],
+   "tagline": "The research station went dark. Something in the trench is awake.",
+   "description": [
+    "The research station went dark. Something in the trench is awake.",
+    "Sound design does the heavy lifting here; headphones strongly recommended. Responsive gunplay and a steady drip of unlocks keep every session fresh.",
+    "Developed by Pressure Point. Tags: Underwater, Survival, Sci-Fi."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i5-7500",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 960",
+     "storage": "15 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i7-9700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce GTX 1660",
+     "storage": "15 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "NightOwlNora",
+     "hours": 95,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    },
+    {
+     "user": "SlowBurnSam",
+     "hours": 186,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "Priya_P",
+     "hours": 277,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "ctrl_alt_defeat",
+     "hours": 368,
+     "recommended": false,
+     "text": "Too grindy for my taste. Refunded after two hours."
+    }
+   ]
+  },
+  {
+   "id": "lofi-lab",
+   "title": "Lofi Lab",
+   "developer": "Tinker Moon",
+   "genres": [
+    "Sim",
+    "Indie"
+   ],
+   "tags": [
+    "Music",
+    "Relaxing",
+    "Creative"
+   ],
+   "price": 7.99,
+   "discount": 0,
+   "releaseDate": "2023-12-01",
+   "esrb": "E",
+   "reviewScore": 96,
+   "reviewCount": 4380,
+   "reviewLabel": "Overwhelmingly Positive",
+   "emoji": "🎧",
+   "hue": 255,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows",
+    "macOS",
+    "Linux"
+   ],
+   "tagline": "Mix beats, decorate a cozy desk, and let the rain do the rest.",
+   "description": [
+    "Mix beats, decorate a cozy desk, and let the rain do the rest.",
+    "Systems upon systems, all of them satisfying to tinker with. A small team's big idea, polished until it shines.",
+    "Developed by Tinker Moon. Tags: Music, Relaxing, Creative."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 132,
+     "recommended": true,
+     "text": "Polished, charming, and worth every penny."
+    },
+    {
+     "user": "GlitchWitch",
+     "hours": 223,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "Mara_K",
+     "hours": 314,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "NightOwlNora",
+     "hours": 25,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    }
+   ]
+  },
+  {
+   "id": "gravity-garden",
+   "title": "Gravity Garden",
+   "developer": "Little Kiln",
+   "genres": [
+    "Puzzle",
+    "Platformer"
+   ],
+   "tags": [
+    "Physics",
+    "Relaxing",
+    "Singleplayer"
+   ],
+   "price": 11.99,
+   "discount": 0,
+   "releaseDate": "2025-05-09",
+   "esrb": "E",
+   "reviewScore": 90,
+   "reviewCount": 3890,
+   "reviewLabel": "Very Positive",
+   "emoji": "🌌",
+   "hue": 170,
+   "featured": false,
+   "comingSoon": false,
+   "platforms": [
+    "Windows"
+   ],
+   "tagline": "Flip gravity to coax a garden into bloom between the stars.",
+   "description": [
+    "Flip gravity to coax a garden into bloom between the stars.",
+    "Easy to pick up, quietly brilliant once the later stages start to bend your brain. Pixel-precise controls and level design that respects your time.",
+    "Developed by Little Kiln. Tags: Physics, Relaxing, Singleplayer."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10 64-bit",
+     "cpu": "Intel Core i3-6100",
+     "ram": "4 GB RAM",
+     "gpu": "GeForce GTX 750 Ti",
+     "storage": "2 GB"
+    },
+    "recommended": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8400",
+     "ram": "8 GB RAM",
+     "gpu": "GeForce GTX 1050 Ti",
+     "storage": "2 GB"
+    }
+   },
+   "reviews": [
+    {
+     "user": "Ravi",
+     "hours": 169,
+     "recommended": true,
+     "text": "Easily one of my favorite games this year. Hours vanished."
+    },
+    {
+     "user": "tankenjoyer",
+     "hours": 260,
+     "recommended": true,
+     "text": "Great pacing and a soundtrack I keep humming at work."
+    },
+    {
+     "user": "JumpKing88",
+     "hours": 351,
+     "recommended": true,
+     "text": "Does something I haven't seen before and nails it."
+    },
+    {
+     "user": "xX_Pixel_Xx",
+     "hours": 62,
+     "recommended": true,
+     "text": "Played with friends and it was an absolute blast."
+    }
+   ]
+  },
+  {
+   "id": "eclipse-protocol",
+   "title": "Eclipse Protocol",
+   "developer": "Orbital Fox Games",
+   "genres": [
+    "Action",
+    "RPG"
+   ],
+   "tags": [
+    "Sci-Fi",
+    "Co-op",
+    "Upcoming"
+   ],
+   "price": 49.99,
+   "discount": 0,
+   "releaseDate": "2027-02-20",
+   "esrb": "T",
+   "reviewScore": 0,
+   "reviewCount": 0,
+   "reviewLabel": "No reviews yet",
+   "emoji": "🌘",
+   "hue": 285,
+   "featured": false,
+   "comingSoon": true,
+   "platforms": [
+    "Windows",
+    "macOS"
+   ],
+   "tagline": "Four operatives. One dying sun. Coming early next year.",
+   "description": [
+    "Four operatives. One dying sun. Coming early next year.",
+    "Combat has weight, and the encounter design rewards learning enemy patterns. Deep builds, memorable companions, and choices that actually change the ending.",
+    "Developed by Orbital Fox Games. Tags: Sci-Fi, Co-op, Upcoming."
+   ],
+   "sysreq": {
+    "minimum": {
+     "os": "Windows 10/11 64-bit",
+     "cpu": "Intel Core i5-8600K",
+     "ram": "12 GB RAM",
+     "gpu": "GeForce GTX 1060 6GB",
+     "storage": "60 GB"
+    },
+    "recommended": {
+     "os": "Windows 11 64-bit",
+     "cpu": "Intel Core i7-12700",
+     "ram": "16 GB RAM",
+     "gpu": "GeForce RTX 3060",
+     "storage": "60 GB"
+    }
+   },
+   "reviews": []
+  }
+ ]
+}
