@@ -1,4 +1,4 @@
-### QA Portfolio
+# QA Portfolio
 
 ***
     Disclaimer:
@@ -11,6 +11,6 @@
 
 [] Project 3 – Planning and Development Pending
 
-# --- Project 1 Pixel Vault ---
+### --- Project 1 Pixel Vault ---
 
 [] Bugs found | Pending |
