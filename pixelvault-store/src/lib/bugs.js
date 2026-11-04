@@ -25,15 +25,6 @@ function read() {
 const active = new Set(read())
 
 export const hasBug = (id) => active.has(id)
-export const activeBugs = () => [...active]
-
-// Reloads the page with a specific set of bugs (used by the QA Lab panel).
-export function setBugs(list) {
-  const url = new URL(window.location.href)
-  if (list.length) url.searchParams.set('bugs', list.join(','))
-  else url.searchParams.set('bugs', '')
-  window.location.href = url.toString()
-}
 
 if (active.has('BUG-11')) document.documentElement.classList.add('bug-mobile-cart')
 

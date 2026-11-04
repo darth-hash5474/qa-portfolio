@@ -57,7 +57,7 @@ A `?bugs=` URL param overrides the flag for a single page load, which is handy i
 | --- | --- |
 | `?delay=1500` | Slower games request (default 500 ms) so loading states are easy to see |
 | `?fail=1` | Games request fails, which shows the error state |
-| `?bugs=BUG-01,BUG-05` | Overrides the `--bugs` flag for this page load (see "Seeded bugs" above). Also available from the 🐞 QA Lab panel |
+| `?bugs=BUG-01,BUG-05` | Overrides the `--bugs` flag for this page load (see "Seeded bugs" above) |
 
 Put them before the hash: `http://localhost:5173/?delay=1500&bugs=BUG-03#/cart`.
 Store filters live inside the hash: `/#/?genre=RPG,Horror&max=30&sale=1&sort=price-asc&page=2`.
@@ -78,6 +78,6 @@ Use a fresh browser context per test, or clear storage, to start clean.
 ```
 public/api/games.json   mock catalog (27 games)
 src/lib/                bug-ids.js + bugs.js (bug switches), pricing.js (totals/promos/tax), store.jsx (state)
-src/components/         Header, SearchBox, Carousel, GameCard, AgeGate, QALab, …
+src/components/         Header, SearchBox, Carousel, GameCard, AgeGate, …
 src/pages/              Store, Game, Cart, Checkout, Order, Library, Wishlist
 ```

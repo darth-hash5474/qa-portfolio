@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { Link, Route, Routes, useLocation } from 'react-router-dom'
 import Header from './components/Header'
-import QALab from './components/QALab'
 import Toasts from './components/Toasts'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
@@ -47,7 +46,6 @@ export default function App() {
         <p>© 2026 PixelVault — a fictional store built for UI test practice. No real purchases are made.</p>
       </footer>
       <Toasts />
-      <QALab />
     </>
   )
 }
