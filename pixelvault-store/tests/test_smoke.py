@@ -1,1 +1,0 @@
-# Run a quick smoke test
